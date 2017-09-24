@@ -30,6 +30,9 @@ class Host(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+    def __str__(self):
+        return '<Host(name=%s)>' % self.name
+
     def save(self):
         """保存到数据库中
         """
@@ -50,12 +53,14 @@ class Host(db.Model):
         """检查 Redis 服务器是否可以访问
         """
         try:
-            self.redis.ping()
+            return self.redis.ping()
         except RedisError:
             raise RestException(400, 'redis server %s can not connected' % self.host)
 
     def get_metrics(self):
         """获取 Redis 服务器监控信息
+
+        通过 Redis 服务器指令 INFO 返回监控信息, 参考 https://redis.io/commands/INFO
         """
         try:
             # TODO 新版本的 Redis 服务器支持查看某一 setion 的信息，不必返回所有信息
