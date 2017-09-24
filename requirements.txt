@@ -1,0 +1,6 @@
+Flask==0.12.2
+Flask-RESTful==0.3.6
+marshmallow==2.13.6
+hiredis==0.2.0
+webargs==1.8.1
+Flask-SQLAlchemy==2.2
