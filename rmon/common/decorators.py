@@ -4,7 +4,7 @@
 """
 
 from functools import wraps
-from flask import request
+from flask import g
 from rmon.common.rest import RestException
 
 
@@ -24,16 +24,23 @@ class ObjectMustBeExist:
         """装饰器实现
         """
         @wraps(func)
-        def wrapper(object_id, *args, **kwargs):
+        def wrapper(*args, **kwargs):
             """
             Args:
                 object_id (int): SQLAlchemy object id
             """
+
+            object_id = kwargs.get('object_id')
+            if object_id is None:
+                raise RestException(404, 'object not exist')
+
             obj = self.object_class.query.get(object_id)
             if obj is None:
-                raise RestException(404, 'not exist')
-            request.instance = obj
-            return func(object_id, *args, **kwargs)
+                raise RestException(404, 'object not exist')
+
+            g.instance = obj
+            return func(*args, **kwargs)
+
         return wrapper
 
 

@@ -1,7 +1,7 @@
 import pytest
 
 from rmon.app import create_app
-from rmon.models import Host
+from rmon.models import Server
 from rmon.models import db as database
 
 
@@ -31,10 +31,10 @@ def client(app):
 
 
 @pytest.fixture
-def host(db):
+def server(db):
     """测试 Redis 服务器记录
     """
-    h = Host(name='redis_test', description='this is a test record',
+    server = Server(name='redis_test', description='this is a test record',
              host='127.0.0.1', port='6379')
-    h.save()
-    return h
+    server.save()
+    return server

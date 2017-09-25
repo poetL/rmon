@@ -7,7 +7,6 @@ from flask import Flask
 
 from rmon.views import api
 from rmon.models import db
-from rmon.common.json import CustomJSONEncoder
 from rmon.config import DevConfig, ProductConfig
 
 
@@ -34,7 +33,6 @@ def create_app():
     # 从环境变量 RMON_SETTINGS 指定的文件中加载配置
     app.config.from_envvar('RMON_SETTINGS', silent=True)
 
-    app.json_encoder = CustomJSONEncoder
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     # 注册 Blueprint

@@ -1,72 +1,82 @@
-from rmon.models import Host
+from rmon.models import Server
 from rmon.common.rest import RestException
 
-class TestHost:
-    """测试 Host 相关功能
+class TestServer:
+    """测试 Server 相关功能
     """
 
     def test_save(self, db):
-        """测试 Host.save 保存服务器方法
+        """测试 Server.save 保存服务器方法
         """
         # 初始状态下，数据库中没有保存任何 Redis，所以数量为 0
-        assert Host.query.count() == 0
-        host = Host(name='test', host='127.0.0.1')
+        assert Server.query.count() == 0
+        server = Server(name='test', host='127.0.0.1')
         # 保存到数据库中
-        host.save()
+        server.save()
         # 现在数据库中数量变为 1
-        assert  Host.query.count() == 1
+        assert  Server.query.count() == 1
         # 且数据库中的记录就是之前创建的记录
-        assert Host.query.first() == host
+        assert Server.query.first() == server
 
-    def test_delete(self, db, host):
-        """测试 Host.delete 删除服务器方法
+    def test_delete(self, db, server):
+        """测试 Server.delete 删除服务器方法
         """
-        assert Host.query.count() == 1
-        host.delete()
-        assert Host.query.count() == 0
+        assert Server.query.count() == 1
+        server.delete()
+        assert Server.query.count() == 0
 
-    def test_ping_success(self, db, host):
-        """测试 Host.ping 方法执行成功
+    def test_ping_success(self, db, server):
+        """测试 Server.ping 方法执行成功
 
         需要保证 Redis 服务器监听在 127.0.0.1:6379 地址
         """
-        assert host.ping() is True
+        assert server.ping() is True
 
     def test_ping_failed(self, db):
-        """测试 Host.ping 方法执行失败
+        """测试 Server.ping 方法执行失败
 
-        Host.ping 方法执行失败时，会抛出 RestException 异常
+        Server.ping 方法执行失败时，会抛出 RestException 异常
         """
 
         # 没有 Redis 服务器监听在 127.0.0.1:6399 地址, 所以将访问失败
-        host = Host(name='test', host='127.0.0.1', port=6399)
+        server = Server(name='test', host='127.0.0.1', port=6399)
 
         try:
-            host.ping()
+            server.ping()
         except RestException as e:
             assert e.code == 400
-            assert e.message == 'redis server %s can not connected' % host.host
+            assert e.message == 'redis server %s can not connected' % server.host
 
-    def test_get_metrics_success(self, host):
-        """测试 Host.get_metrics 方法执行成功
+    def test_get_metrics_success(self, server):
+        """测试 Server.get_metrics 方法执行成功
         """
 
-        metrics = host.get_metrics()
+        metrics = server.get_metrics()
 
         # refer https://redis.io/commands/INFO
         assert 'total_commands_processed' in metrics
         assert 'used_cpu_sys' in metrics
         assert 'used_memory' in metrics
 
-    def test_get_metrics_failed(self, host):
-        """ 测试 Host.get_metrics 方法执行失败
+    def test_get_metrics_failed(self, server):
+        """测试 Server.get_metrics 方法执行失败
         """
 
         # 没有 Redis 服务器监听在 127.0.0.1:6399 地址, 所以将访问失败
-        host = Host(name='test', host='127.0.0.1', port=6399)
+        server = Server(name='test', host='127.0.0.1', port=6399)
 
         try:
-            info  = host.get_metrics()
+            info  = server.get_metrics()
         except RestException as e:
             assert e.code == 400
-            assert e.message == 'redis server %s can not connected' % host.host
+            assert e.message == 'redis server %s can not connected' % server.host
+
+    def test_execute_success(self, server):
+        """测试 Server.execute 方法执行 Redis 指令成功
+        """
+        pass
+
+    def test_execute_failed(self, server):
+        """测试 Server.execute 执行失败
+        """
+        pass

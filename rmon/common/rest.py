@@ -19,6 +19,7 @@ from werkzeug.wrappers import Response
 class RestException(Exception):
     """异常基类
     """
+
     def __init__(self, code, message):
         """初始化异常
 
@@ -28,6 +29,7 @@ class RestException(Exception):
         """
         self.code = code
         self.message = message
+        super(RestException, self).__init__()
 
 
 class RestView(MethodView):
@@ -82,6 +84,14 @@ class RestView(MethodView):
         # 从返回值中解析出 HTTP 响应信息，比如状态码和头部
         data, code, headers = RestView.unpack(resp)
 
+        # 处理错误，HTTP 状态码大于 400 时认为是错误
+        # 返回的错误类似于 {'name': ['redis server already exist']} 将其调整为
+        # {'name': 'redis server already exist'}
+        if code >= 400 and isinstance(data, dict):
+            for key in data:
+                if isinstance(data[key], list) and len(data[key]) > 0:
+                    data[key] = data[key][0]
+
         # 序列化数据
         result = dumps(data) + '\n'
         # 生成 HTTP 响应
@@ -99,7 +109,7 @@ class RestView(MethodView):
         headers = {}
         if not isinstance(value, tuple):
             return value, 200, {}
-        # 如果返回值有 3 个
+        # 如果返回值有 3
         if len(value) == 3:
             data, code, headers = value
         elif len(value) == 2:
