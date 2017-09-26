@@ -201,8 +201,6 @@ Container	../venv/lib/python3.6/_collections_abc.py	/^class Container(metaclass=
 Coroutine	../venv/lib/python3.6/_collections_abc.py	/^class Coroutine(Awaitable):$/;"	kind:class	line:114
 CoroutineType	../venv/lib/python3.6/types.py	/^CoroutineType = type(_c)$/;"	kind:variable	line:24
 Counter	../venv/lib/python3.6/collections/__init__.py	/^class Counter(dict):$/;"	kind:class	line:465
-CustomJSONEncoder	../rmon/app.py	/^from rmon.common.json import CustomJSONEncoder$/;"	kind:namespace	line:10
-CustomJSONEncoder	../rmon/common/json.py	/^class CustomJSONEncoder(JSONDecoder):$/;"	kind:class	line:9
 DEBUG	../rmon/config.py	/^    DEBUG = False$/;"	kind:variable	line:20
 DEBUG	../rmon/config.py	/^    DEBUG = True$/;"	kind:variable	line:12
 DEBUG	../venv/lib/python3.6/re.py	/^    DEBUG = sre_compile.SRE_FLAG_DEBUG # dump pattern after compilation$/;"	kind:variable	line:160
@@ -220,7 +218,7 @@ DOUBLESLASHEQUAL	../venv/lib/python3.6/token.py	/^DOUBLESLASHEQUAL = 48$/;"	kind
 DOUBLESTAR	../venv/lib/python3.6/token.py	/^DOUBLESTAR = 35$/;"	kind:variable	line:48
 DOUBLESTAREQUAL	../venv/lib/python3.6/token.py	/^DOUBLESTAREQUAL = 46$/;"	kind:variable	line:59
 Decnumber	../venv/lib/python3.6/tokenize.py	/^Decnumber = r'(?:0(?:_?0)*|[1-9](?:_?[0-9])*)'$/;"	kind:variable	line:126
-DevConfig	../rmon/app.py	/^from rmon.config import DevConfig, ProductConfig$/;"	kind:namespace	line:11
+DevConfig	../rmon/app.py	/^from rmon.config import DevConfig, ProductConfig$/;"	kind:namespace	line:10
 DevConfig	../rmon/config.py	/^class DevConfig:$/;"	kind:class	line:8
 Double	../venv/lib/python3.6/tokenize.py	/^Double = r'[^"\\\\]*(?:\\\\.[^"\\\\]*)*"'$/;"	kind:variable	line:162
 Double3	../venv/lib/python3.6/tokenize.py	/^Double3 = r'[^"\\\\]*(?:(?:\\\\.|"(?!""))[^"\\\\]*)*"""'$/;"	kind:variable	line:166
@@ -303,20 +301,6 @@ HMAC	../venv/lib/python3.6/hmac.py	/^class HMAC:$/;"	kind:class	line:19
 Hashable	../venv/lib/python3.6/_collections_abc.py	/^class Hashable(metaclass=ABCMeta):$/;"	kind:class	line:84
 HeaderError	../venv/lib/python3.6/tarfile.py	/^class HeaderError(TarError):$/;"	kind:class	line:285
 Hexnumber	../venv/lib/python3.6/tokenize.py	/^Hexnumber = r'0[xX](?:_?[0-9a-fA-F])+'$/;"	kind:variable	line:123
-Host	../rmon/models.py	/^class Host(db.Model):$/;"	kind:class	line:17
-Host	../rmon/views/host.py	/^from rmon.models import Host, HostSchema$/;"	kind:namespace	line:10
-Host	../tests/fixtures.py	/^from rmon.models import Host$/;"	kind:namespace	line:4
-Host	../tests/test_models.py	/^from rmon.models import Host$/;"	kind:namespace	line:1
-HostCommand	../rmon/views/host.py	/^class HostCommand(RestView):$/;"	kind:class	line:76
-HostCommand	../rmon/views/urls.py	/^from rmon.views.host import HostList, HostDetail, HostMetrics, HostCommand$/;"	kind:namespace	line:7
-HostDetail	../rmon/views/host.py	/^class HostDetail(MethodView):$/;"	kind:class	line:34
-HostDetail	../rmon/views/urls.py	/^from rmon.views.host import HostList, HostDetail, HostMetrics, HostCommand$/;"	kind:namespace	line:7
-HostList	../rmon/views/host.py	/^class HostList(RestView):$/;"	kind:class	line:12
-HostList	../rmon/views/urls.py	/^from rmon.views.host import HostList, HostDetail, HostMetrics, HostCommand$/;"	kind:namespace	line:7
-HostMetrics	../rmon/views/host.py	/^class HostMetrics(RestView):$/;"	kind:class	line:64
-HostMetrics	../rmon/views/urls.py	/^from rmon.views.host import HostList, HostDetail, HostMetrics, HostCommand$/;"	kind:namespace	line:7
-HostSchema	../rmon/models.py	/^class HostSchema(Schema):$/;"	kind:class	line:77
-HostSchema	../rmon/views/host.py	/^from rmon.models import Host, HostSchema$/;"	kind:namespace	line:10
 I	../venv/lib/python3.6/re.py	/^    I = IGNORECASE$/;"	kind:variable	line:151
 IGNORECASE	../venv/lib/python3.6/re.py	/^    IGNORECASE = sre_compile.SRE_FLAG_IGNORECASE # ignore case$/;"	kind:variable	line:144
 IMP_HOOK	../venv/lib/python3.6/imp.py	/^IMP_HOOK = 9$/;"	kind:variable	line:45
@@ -577,7 +561,7 @@ IncrementalEncoder	../venv/lib/python3.6/encodings/utf_8_sig.py	/^class Incremen
 IncrementalEncoder	../venv/lib/python3.6/encodings/uu_codec.py	/^class IncrementalEncoder(codecs.IncrementalEncoder):$/;"	kind:class	line:73
 IncrementalEncoder	../venv/lib/python3.6/encodings/zlib_codec.py	/^class IncrementalEncoder(codecs.IncrementalEncoder):$/;"	kind:class	line:27
 IndexView	../rmon/views/index.py	/^class IndexView(MethodView):$/;"	kind:class	line:10
-IndexView	../rmon/views/urls.py	/^from rmon.views.index import IndexView$/;"	kind:namespace	line:8
+IndexView	../rmon/views/urls.py	/^from rmon.views.index import IndexView$/;"	kind:namespace	line:7
 InspectLoader	../venv/lib/python3.6/importlib/abc.py	/^class InspectLoader(Loader):$/;"	kind:class	line:186
 IntEnum	../venv/lib/python3.6/enum.py	/^class IntEnum(int, Enum):$/;"	kind:class	line:639
 IntFlag	../venv/lib/python3.6/enum.py	/^class IntFlag(int, Flag):$/;"	kind:class	line:753
@@ -586,7 +570,6 @@ InvalidHeaderError	../venv/lib/python3.6/tarfile.py	/^class InvalidHeaderError(H
 ItemsView	../venv/lib/python3.6/_collections_abc.py	/^class ItemsView(MappingView, Set):$/;"	kind:class	line:725
 Iterable	../venv/lib/python3.6/_collections_abc.py	/^class Iterable(metaclass=ABCMeta):$/;"	kind:class	line:243
 Iterator	../venv/lib/python3.6/_collections_abc.py	/^class Iterator(Iterable):$/;"	kind:class	line:259
-JSONDecoder	../rmon/common/json.py	/^from flask.json import JSONDecoder$/;"	kind:namespace	line:7
 Just	../venv/lib/python3.6/importlib/__init__.py	/^import _imp  # Just the builtin component, NOT the full Python module$/;"	kind:namespace	line:12
 K	../venv/lib/python3.6/functools.py	/^    class K(object):$/;"	kind:class	line:213
 KeyedRef	../venv/lib/python3.6/weakref.py	/^class KeyedRef(ref):$/;"	kind:class	line:293
@@ -633,7 +616,6 @@ MemberDescriptorType	../venv/lib/python3.6/types.py	/^MemberDescriptorType = typ
 MetaPathFinder	../venv/lib/python3.6/importlib/abc.py	/^class MetaPathFinder(Finder):$/;"	kind:class	line:47
 MethodType	../venv/lib/python3.6/types.py	/^MethodType = type(_C()._m)$/;"	kind:variable	line:34
 MethodView	../rmon/common/rest.py	/^from flask.views import MethodView$/;"	kind:namespace	line:14
-MethodView	../rmon/views/host.py	/^from flask.views import MethodView$/;"	kind:namespace	line:6
 MethodView	../rmon/views/index.py	/^from flask.views import MethodView$/;"	kind:namespace	line:7
 ModuleSpec	../venv/lib/python3.6/importlib/_bootstrap.py	/^class ModuleSpec:$/;"	kind:class	line:318
 ModuleSpec	../venv/lib/python3.6/importlib/machinery.py	/^from ._bootstrap import ModuleSpec$/;"	kind:namespace	line:5
@@ -662,7 +644,7 @@ OP	../venv/lib/python3.6/token.py	/^OP = 53$/;"	kind:variable	line:66
 OPEN_METH	../venv/lib/python3.6/tarfile.py	/^    OPEN_METH = {$/;"	kind:variable	line:1706
 OP_IGNORE	../venv/lib/python3.6/sre_constants.py	/^OP_IGNORE = {$/;"	kind:variable	line:119
 ObjectMustBeExist	../rmon/common/decorators.py	/^class ObjectMustBeExist:$/;"	kind:class	line:11
-ObjectMustBeExist	../rmon/views/host.py	/^from rmon.common.decorators import ObjectMustBeExist$/;"	kind:namespace	line:9
+ObjectMustBeExist	../rmon/views/server.py	/^from rmon.common.decorators import ObjectMustBeExist$/;"	kind:namespace	line:8
 Octnumber	../venv/lib/python3.6/tokenize.py	/^Octnumber = r'0[oO](?:_?[0-7])+'$/;"	kind:variable	line:125
 OpenWrapper	../venv/lib/python3.6/io.py	/^OpenWrapper = _io.open # for compatibility with _pyio$/;"	kind:variable	line:59
 Operator	../venv/lib/python3.6/tokenize.py	/^Operator = group(r"\\*\\*=?", r">>=?", r"<<=?", r"!=",$/;"	kind:variable	line:175
@@ -693,7 +675,7 @@ PathLike	../venv/lib/python3.6/os.py	/^class PathLike(abc.ABC):$/;"	kind:class	l
 Pattern	../venv/lib/python3.6/sre_parse.py	/^class Pattern:$/;"	kind:class	line:74
 PlainToken	../venv/lib/python3.6/tokenize.py	/^PlainToken = group(Number, Funny, String, Name)$/;"	kind:variable	line:184
 Pointfloat	../venv/lib/python3.6/tokenize.py	/^Pointfloat = group(r'[0-9](?:_?[0-9])*\\.(?:[0-9](?:_?[0-9])*)?',$/;"	kind:variable	line:129
-ProductConfig	../rmon/app.py	/^from rmon.config import DevConfig, ProductConfig$/;"	kind:namespace	line:11
+ProductConfig	../rmon/app.py	/^from rmon.config import DevConfig, ProductConfig$/;"	kind:namespace	line:10
 ProductConfig	../rmon/config.py	/^class ProductConfig(DevConfig):$/;"	kind:class	line:17
 ProxyTypes	../venv/lib/python3.6/weakref.py	/^ProxyTypes = (ProxyType, CallableProxyType)$/;"	kind:variable	line:27
 PseudoExtras	../venv/lib/python3.6/tokenize.py	/^PseudoExtras = group(r'\\\\\\r?\\n|\\Z', Comment, Triple)$/;"	kind:variable	line:192
@@ -731,8 +713,8 @@ RestException	../rmon/common/decorators.py	/^from rmon.common.rest import RestEx
 RestException	../rmon/common/rest.py	/^class RestException(Exception):$/;"	kind:class	line:19
 RestException	../rmon/models.py	/^from rmon.common.rest import RestException$/;"	kind:namespace	line:12
 RestException	../tests/test_models.py	/^from rmon.common.rest import RestException$/;"	kind:namespace	line:2
-RestView	../rmon/common/rest.py	/^class RestView(MethodView):$/;"	kind:class	line:33
-RestView	../rmon/views/host.py	/^from rmon.common.rest import RestView$/;"	kind:namespace	line:8
+RestView	../rmon/common/rest.py	/^class RestView(MethodView):$/;"	kind:class	line:35
+RestView	../rmon/views/server.py	/^from rmon.common.rest import RestView$/;"	kind:namespace	line:7
 Reversible	../venv/lib/python3.6/_collections_abc.py	/^class Reversible(Iterable):$/;"	kind:class	line:293
 S	../venv/lib/python3.6/re.py	/^    S = DOTALL$/;"	kind:variable	line:155
 SEARCH_ERROR	../venv/lib/python3.6/imp.py	/^SEARCH_ERROR = 0$/;"	kind:variable	line:36
@@ -826,6 +808,20 @@ SameFileError	../venv/lib/python3.6/shutil.py	/^class SameFileError(Error):$/;"	
 Scanner	../venv/lib/python3.6/re.py	/^class Scanner:$/;"	kind:class	line:346
 Schema	../rmon/models.py	/^from marshmallow import (Schema, fields, validate, post_load,$/;"	kind:namespace	line:8
 Sequence	../venv/lib/python3.6/_collections_abc.py	/^class Sequence(Reversible, Collection):$/;"	kind:class	line:865
+Server	../rmon/models.py	/^class Server(db.Model):$/;"	kind:class	line:17
+Server	../rmon/views/server.py	/^from rmon.models import Server, ServerSchema$/;"	kind:namespace	line:9
+Server	../tests/fixtures.py	/^from rmon.models import Server$/;"	kind:namespace	line:4
+Server	../tests/test_models.py	/^from rmon.models import Server$/;"	kind:namespace	line:1
+Server	../tests/test_views.py	/^from rmon.models import Server$/;"	kind:namespace	line:4
+ServerCommand	../rmon/views/server.py	/^class ServerCommand(RestView):$/;"	kind:class	line:75
+ServerCommand	../rmon/views/urls.py	/^from rmon.views.server import (ServerCommand, ServerDetail, ServerList,$/;"	kind:namespace	line:8
+ServerDetail	../rmon/views/server.py	/^class ServerDetail(RestView):$/;"	kind:class	line:33
+ServerDetail	../rmon/views/urls.py	/^from rmon.views.server import (ServerCommand, ServerDetail, ServerList,$/;"	kind:namespace	line:8
+ServerList	../rmon/views/server.py	/^class ServerList(RestView):$/;"	kind:class	line:11
+ServerList	../rmon/views/urls.py	/^from rmon.views.server import (ServerCommand, ServerDetail, ServerList,$/;"	kind:namespace	line:8
+ServerMetrics	../rmon/views/server.py	/^class ServerMetrics(RestView):$/;"	kind:class	line:63
+ServerSchema	../rmon/models.py	/^class ServerSchema(Schema):$/;"	kind:class	line:77
+ServerSchema	../rmon/views/server.py	/^from rmon.models import Server, ServerSchema$/;"	kind:namespace	line:9
 Set	../venv/lib/python3.6/_collections_abc.py	/^class Set(Collection):$/;"	kind:class	line:416
 SimpleNamespace	../venv/lib/python3.6/types.py	/^SimpleNamespace = type(sys.implementation)$/;"	kind:variable	line:16
 Single	../venv/lib/python3.6/tokenize.py	/^Single = r"[^'\\\\]*(?:\\\\.[^'\\\\]*)*'"$/;"	kind:variable	line:160
@@ -1114,8 +1110,12 @@ TarInfo	../venv/lib/python3.6/tarfile.py	/^class TarInfo(object):$/;"	kind:class
 TemporaryDirectory	../venv/lib/python3.6/tempfile.py	/^class TemporaryDirectory(object):$/;"	kind:class	line:777
 TemporaryFile	../venv/lib/python3.6/tempfile.py	/^    TemporaryFile = NamedTemporaryFile$/;"	kind:variable	line:563
 TemporaryFile	../venv/lib/python3.6/tempfile.py	/^    def TemporaryFile(mode='w+b', buffering=-1, encoding=None,$/;"	kind:function	line:571
-TestHost	../tests/test_models.py	/^class TestHost:$/;"	kind:class	line:4
-TestIndex	../tests/test_views.py	/^class TestIndex:$/;"	kind:class	line:3
+TestIndex	../tests/test_views.py	/^class TestIndex:$/;"	kind:class	line:6
+TestServer	../tests/test_models.py	/^class TestServer:$/;"	kind:class	line:4
+TestServerCommand	../tests/test_views.py	/^class TestServerCommand:$/;"	kind:class	line:261
+TestServerDetail	../tests/test_views.py	/^class TestServerDetail:$/;"	kind:class	line:126
+TestServerList	../tests/test_views.py	/^class TestServerList:$/;"	kind:class	line:26
+TestServerMetrics	../tests/test_views.py	/^class TestServerMetrics:$/;"	kind:class	line:227
 TextIOBase	../venv/lib/python3.6/io.py	/^class TextIOBase(_io._TextIOBase, IOBase):$/;"	kind:class	line:81
 TextIOWrapper	../venv/lib/python3.6/tokenize.py	/^from io import TextIOWrapper$/;"	kind:namespace	line:30
 To	../venv/lib/python3.6/importlib/_bootstrap_external.py	/^    import tokenize  # To avoid bootstrap issues.$/;"	kind:namespace	line:512
@@ -1490,7 +1490,7 @@ __imul__	../venv/lib/python3.6/collections/__init__.py	/^    def __imul__(self, 
 __imul__	../venv/lib/python3.6/operator.py	/^__imul__ = imul$/;"	kind:variable	line:457
 __index__	../venv/lib/python3.6/operator.py	/^__index__ = index$/;"	kind:variable	line:431
 __init__	../rmon/common/decorators.py	/^    def __init__(self, object_class):$/;"	kind:member	line:15
-__init__	../rmon/common/rest.py	/^    def __init__(self, code, message):$/;"	kind:member	line:22
+__init__	../rmon/common/rest.py	/^    def __init__(self, code, message):$/;"	kind:member	line:23
 __init__	../venv/lib/python3.6/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../venv/lib/python3.6/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:698
 __init__	../venv/lib/python3.6/_dummy_thread.py	/^    def __init__(self):$/;"	kind:member	line:99
@@ -1861,7 +1861,7 @@ __subclasshook__	../venv/lib/python3.6/_collections_abc.py	/^    def __subclassh
 __subclasshook__	../venv/lib/python3.6/_collections_abc.py	/^    def __subclasshook__(cls, C):$/;"	kind:member	line:407
 __subclasshook__	../venv/lib/python3.6/_collections_abc.py	/^    def __subclasshook__(cls, C):$/;"	kind:member	line:93
 __subclasshook__	../venv/lib/python3.6/os.py	/^    def __subclasshook__(cls, subclass):$/;"	kind:member	line:1066
-__tablename__	../rmon/models.py	/^    __tablename__ = 'redis_host'$/;"	kind:variable	line:21
+__tablename__	../rmon/models.py	/^    __tablename__ = 'redis_server'$/;"	kind:variable	line:21
 __truediv__	../venv/lib/python3.6/operator.py	/^__truediv__ = truediv$/;"	kind:variable	line:444
 __version__	../venv/lib/python3.6/distutils/__init__.py	/^    __version__ = real_distutils.__version__$/;"	kind:variable	line:23
 __version__	../venv/lib/python3.6/re.py	/^__version__ = "2.2.1"$/;"	kind:variable	line:140
@@ -2460,8 +2460,8 @@ and_	../venv/lib/python3.6/operator.py	/^def and_(a, b):$/;"	kind:function	line:
 any	../venv/lib/python3.6/tokenize.py	/^def any(*choices): return group(*choices) + '*'$/;"	kind:function	line:113
 api	../rmon/app.py	/^from rmon.views import api$/;"	kind:namespace	line:8
 api	../rmon/views/__init__.py	/^from .urls import api/;"	kind:namespace	line:1
-api	../rmon/views/urls.py	/^api = Blueprint('api', __name__, url_prefix='\/')$/;"	kind:variable	line:11
-app	../app.py	/^app = create_app()$/;"	kind:variable	line:3
+api	../rmon/views/urls.py	/^api = Blueprint('api', __name__)$/;"	kind:variable	line:11
+app	../app.py	/^app = create_app()$/;"	kind:variable	line:8
 app	../tests/fixtures.py	/^def app():$/;"	kind:function	line:9
 app.py	../app.py	1;"	kind:file	line:1
 app.py	../rmon/app.py	1;"	kind:file	line:1
@@ -2553,7 +2553,7 @@ cache_from_source	../venv/lib/python3.6/importlib/util.py	/^from ._bootstrap_ext
 cache_info	../venv/lib/python3.6/functools.py	/^    def cache_info():$/;"	kind:function	line:581
 cached	../venv/lib/python3.6/importlib/_bootstrap.py	/^    def cached(self):$/;"	kind:member	line:390
 cached	../venv/lib/python3.6/importlib/_bootstrap.py	/^    def cached(self, cached):$/;"	kind:member	line:399
-cached_property	../rmon/common/decorators.py	/^class cached_property:$/;"	kind:class	line:40
+cached_property	../rmon/common/decorators.py	/^class cached_property:$/;"	kind:class	line:47
 calc_chksums	../venv/lib/python3.6/tarfile.py	/^def calc_chksums(buf):$/;"	kind:function	line:218
 can	../venv/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 capitalize	../venv/lib/python3.6/collections/__init__.py	/^    def capitalize(self): return self.__class__(self.data.capitalize())$/;"	kind:member	line:1164
@@ -2968,8 +2968,8 @@ cr_await	../venv/lib/python3.6/types.py	/^    cr_await = gi_yieldfrom$/;"	kind:v
 cr_code	../venv/lib/python3.6/types.py	/^    cr_code = gi_code$/;"	kind:variable	line:199
 cr_frame	../venv/lib/python3.6/types.py	/^    cr_frame = gi_frame$/;"	kind:variable	line:200
 cr_running	../venv/lib/python3.6/types.py	/^    cr_running = gi_running$/;"	kind:variable	line:201
-create_app	../app.py	/^from rmon.app import create_app$/;"	kind:namespace	line:1
-create_app	../rmon/app.py	/^def create_app():$/;"	kind:function	line:14
+create_app	../app.py	/^from rmon.app import create_app$/;"	kind:namespace	line:6
+create_app	../rmon/app.py	/^def create_app():$/;"	kind:function	line:13
 create_app	../tests/fixtures.py	/^from rmon.app import create_app$/;"	kind:namespace	line:3
 create_dynamic	../venv/lib/python3.6/imp.py	/^    create_dynamic = None$/;"	kind:variable	line:17
 create_dynamic	../venv/lib/python3.6/imp.py	/^    from _imp import create_dynamic$/;"	kind:namespace	line:14
@@ -2981,7 +2981,7 @@ create_module	../venv/lib/python3.6/importlib/_bootstrap_external.py	/^    def c
 create_module	../venv/lib/python3.6/importlib/_bootstrap_external.py	/^    def create_module(self, spec):$/;"	kind:member	line:919
 create_module	../venv/lib/python3.6/importlib/abc.py	/^    def create_module(self, spec):$/;"	kind:member	line:127
 create_module	../venv/lib/python3.6/importlib/util.py	/^    def create_module(self, spec):$/;"	kind:member	line:273
-create_or_update	../rmon/models.py	/^    def create_or_update(self, data):$/;"	kind:member	line:107
+create_or_update	../rmon/models.py	/^    def create_or_update(self, data):$/;"	kind:member	line:114
 create_pax_global_header	../venv/lib/python3.6/tarfile.py	/^    def create_pax_global_header(cls, pax_headers):$/;"	kind:member	line:890
 create_pax_header	../venv/lib/python3.6/tarfile.py	/^    def create_pax_header(self, info, encoding):$/;"	kind:member	line:840
 create_ustar_header	../venv/lib/python3.6/tarfile.py	/^    def create_ustar_header(self, info, encoding, errors):$/;"	kind:member	line:813
@@ -2993,7 +2993,6 @@ curdir	../venv/lib/python3.6/posixpath.py	/^curdir = '.'$/;"	kind:variable	line:
 currency	../venv/lib/python3.6/locale.py	/^def currency(val, symbol=True, grouping=False, international=False):$/;"	kind:function	line:254
 data_encoding	../venv/lib/python3.6/codecs.py	/^    data_encoding = 'unknown'$/;"	kind:variable	line:769
 database	../tests/fixtures.py	/^from rmon.models import db as database$/;"	kind:namespace	line:5
-datetime	../rmon/common/json.py	/^from datetime import datetime$/;"	kind:namespace	line:5
 datetime	../rmon/models.py	/^from datetime import datetime$/;"	kind:namespace	line:7
 db	../rmon/app.py	/^from rmon.models import db$/;"	kind:namespace	line:9
 db	../rmon/models.py	/^db = SQLAlchemy()$/;"	kind:variable	line:14
@@ -3329,7 +3328,6 @@ decorators.py	../rmon/common/decorators.py	1;"	kind:file	line:1
 deepcopy	../venv/lib/python3.6/copy.py	/^def deepcopy(x, memo=None, _nil=[]):$/;"	kind:function	line:132
 deepcopy	../venv/lib/python3.6/weakref.py	/^        from copy import deepcopy$/;"	kind:namespace	line:171
 deepcopy	../venv/lib/python3.6/weakref.py	/^        from copy import deepcopy$/;"	kind:namespace	line:391
-default	../rmon/common/json.py	/^    def default(self, obj):$/;"	kind:member	line:13
 defaultaction	../venv/lib/python3.6/warnings.py	/^    defaultaction = "default"$/;"	kind:variable	line:494
 defaultaction	../venv/lib/python3.6/warnings.py	/^    defaultaction = _defaultaction$/;"	kind:variable	line:489
 defaultdict	../venv/lib/python3.6/collections/__init__.py	/^    from _collections import defaultdict$/;"	kind:namespace	line:42
@@ -3337,7 +3335,7 @@ defpath	../venv/lib/python3.6/ntpath.py	/^defpath = '.;C:\\\\bin'$/;"	kind:varia
 defpath	../venv/lib/python3.6/os.py	/^from os.path import (curdir, pardir, sep, pathsep, defpath, extsep, altsep,$/;"	kind:namespace	line:92
 defpath	../venv/lib/python3.6/posixpath.py	/^defpath = ':\/bin:\/usr\/bin'$/;"	kind:variable	line:35
 delete	../rmon/models.py	/^    def delete(self):$/;"	kind:member	line:42
-delete	../rmon/views/host.py	/^    def delete(self, host_id):$/;"	kind:member	line:57
+delete	../rmon/views/server.py	/^    def delete(self, object_id):$/;"	kind:member	line:56
 deleter	../venv/lib/python3.6/types.py	/^    def deleter(self, fdel):$/;"	kind:member	line:165
 delitem	../venv/lib/python3.6/operator.py	/^def delitem(a, b):$/;"	kind:function	line:165
 delocalize	../venv/lib/python3.6/locale.py	/^def delocalize(string):$/;"	kind:function	line:303
@@ -3368,7 +3366,7 @@ discard	../venv/lib/python3.6/_weakrefset.py	/^    def discard(self, item):$/;"	
 disk_usage	../venv/lib/python3.6/shutil.py	/^    def disk_usage(path):$/;"	kind:function	line:1000
 disk_usage	../venv/lib/python3.6/shutil.py	/^    def disk_usage(path):$/;"	kind:function	line:982
 dispatch	../venv/lib/python3.6/functools.py	/^    def dispatch(cls):$/;"	kind:function	line:762
-dispatch_request	../rmon/common/rest.py	/^    def dispatch_request(self, *args, **kwargs):$/;"	kind:member	line:54
+dispatch_request	../rmon/common/rest.py	/^    def dispatch_request(self, *args, **kwargs):$/;"	kind:member	line:56
 dispatch_table	../venv/lib/python3.6/copy.py	/^from copyreg import dispatch_table$/;"	kind:namespace	line:53
 dispatch_table	../venv/lib/python3.6/copyreg.py	/^dispatch_table = {}$/;"	kind:variable	line:10
 dist	../venv/lib/python3.6/distutils/__init__.py	/^from distutils import dist, sysconfig$/;"	kind:namespace	line:25
@@ -3705,7 +3703,11 @@ encodings	../venv/lib/python3.6/locale.py	/^import encodings$/;"	kind:namespace	
 encodings	../venv/lib/python3.6/locale.py	/^import encodings.aliases$/;"	kind:namespace	line:15
 encodings	../venv/lib/python3.6/site.py	/^                import encodings$/;"	kind:namespace	line:521
 endpats	../venv/lib/python3.6/tokenize.py	/^endpats = {}$/;"	kind:variable	line:198
-endpoint	../tests/test_views.py	/^    endpoint = 'api.index'$/;"	kind:variable	line:9
+endpoint	../tests/test_views.py	/^    endpoint = 'api.index'$/;"	kind:variable	line:12
+endpoint	../tests/test_views.py	/^    endpoint = 'api.server_command'$/;"	kind:variable	line:265
+endpoint	../tests/test_views.py	/^    endpoint = 'api.server_detail'$/;"	kind:variable	line:130
+endpoint	../tests/test_views.py	/^    endpoint = 'api.server_list'$/;"	kind:variable	line:30
+endpoint	../tests/test_views.py	/^    endpoint = 'api.server_metrics'$/;"	kind:variable	line:231
 endswith	../venv/lib/python3.6/collections/__init__.py	/^    def endswith(self, suffix, start=0, end=_sys.maxsize):$/;"	kind:member	line:1179
 enum	../venv/lib/python3.6/re.py	/^import enum$/;"	kind:namespace	line:122
 enum.py	../venv/lib/python3.6/enum.py	1;"	kind:file	line:1
@@ -3848,6 +3850,8 @@ functools	../venv/lib/python3.6/locale.py	/^import functools$/;"	kind:namespace	
 functools	../venv/lib/python3.6/re.py	/^import functools$/;"	kind:namespace	line:125
 functools.py	../venv/lib/python3.6/functools.py	1;"	kind:file	line:1
 fwalk	../venv/lib/python3.6/os.py	/^    def fwalk(top=".", topdown=True, onerror=None, *, follow_symlinks=False, dir_fd=None):$/;"	kind:function	line:421
+g	../rmon/common/decorators.py	/^from flask import g$/;"	kind:namespace	line:7
+g	../rmon/views/server.py	/^from flask import request, g$/;"	kind:namespace	line:5
 gammavariate	../venv/lib/python3.6/random.py	/^    def gammavariate(self, alpha, beta):$/;"	kind:member	line:498
 gammavariate	../venv/lib/python3.6/random.py	/^gammavariate = _inst.gammavariate$/;"	kind:variable	line:757
 gauss	../venv/lib/python3.6/random.py	/^    def gauss(self, mu, sigma):$/;"	kind:member	line:570
@@ -3866,10 +3870,10 @@ generators	../venv/lib/python3.6/__future__.py	/^generators = _Feature((2, 2, 0,
 genericpath	../venv/lib/python3.6/ntpath.py	/^import genericpath$/;"	kind:namespace	line:11
 genericpath	../venv/lib/python3.6/posixpath.py	/^import genericpath$/;"	kind:namespace	line:16
 genericpath.py	../venv/lib/python3.6/genericpath.py	1;"	kind:file	line:1
-get	../rmon/views/host.py	/^    def get(self):$/;"	kind:member	line:16
-get	../rmon/views/host.py	/^    def get(self, host_id):$/;"	kind:member	line:40
-get	../rmon/views/host.py	/^    def get(self, host_id):$/;"	kind:member	line:69
 get	../rmon/views/index.py	/^    def get(self):$/;"	kind:member	line:14
+get	../rmon/views/server.py	/^    def get(self):$/;"	kind:member	line:15
+get	../rmon/views/server.py	/^    def get(self, object_id):$/;"	kind:member	line:39
+get	../rmon/views/server.py	/^    def get(self, object_id):$/;"	kind:member	line:68
 get	../venv/lib/python3.6/_collections_abc.py	/^    def get(self, key, default=None):$/;"	kind:member	line:657
 get	../venv/lib/python3.6/collections/__init__.py	/^    def get(self, key, default=None):$/;"	kind:member	line:884
 get	../venv/lib/python3.6/sre_parse.py	/^    def get(self):$/;"	kind:member	line:253
@@ -4107,7 +4111,7 @@ grp	../venv/lib/python3.6/tarfile.py	/^    import grp, pwd$/;"	kind:namespace	li
 gt	../venv/lib/python3.6/operator.py	/^def gt(a, b):$/;"	kind:function	line:47
 gzip	../venv/lib/python3.6/tarfile.py	/^            import gzip$/;"	kind:namespace	line:1623
 gzopen	../venv/lib/python3.6/tarfile.py	/^    def gzopen(cls, name, mode="r", fileobj=None, compresslevel=9, **kwargs):$/;"	kind:member	line:1615
-handler_error	../rmon/common/rest.py	/^    def handler_error(self, exception):$/;"	kind:member	line:41
+handler_error	../rmon/common/rest.py	/^    def handler_error(self, exception):$/;"	kind:member	line:43
 has_deadlock	../venv/lib/python3.6/importlib/_bootstrap.py	/^    def has_deadlock(self):$/;"	kind:member	line:65
 has_location	../venv/lib/python3.6/importlib/_bootstrap.py	/^    def has_location(self):$/;"	kind:member	line:411
 has_location	../venv/lib/python3.6/importlib/_bootstrap.py	/^    def has_location(self, value):$/;"	kind:member	line:415
@@ -4125,8 +4129,6 @@ hexdigest	../venv/lib/python3.6/hmac.py	/^    def hexdigest(self):$/;"	kind:memb
 hmac.py	../venv/lib/python3.6/hmac.py	1;"	kind:file	line:1
 host	../rmon/models.py	/^    host = db.Column(db.String(15))$/;"	kind:variable	line:27
 host	../rmon/models.py	/^    host = fields.String(required=True,$/;"	kind:variable	line:84
-host	../tests/fixtures.py	/^def host(db):$/;"	kind:function	line:34
-host.py	../rmon/views/host.py	1;"	kind:file	line:1
 hp_roman8.py	../venv/lib/python3.6/encodings/hp_roman8.py	1;"	kind:file	line:1
 hz.py	../venv/lib/python3.6/encodings/hz.py	1;"	kind:file	line:1
 iadd	../venv/lib/python3.6/operator.py	/^def iadd(a, b):$/;"	kind:function	line:337
@@ -4275,7 +4277,7 @@ join	../venv/lib/python3.6/collections/__init__.py	/^    def join(self, seq): re
 join	../venv/lib/python3.6/ntpath.py	/^def join(path, *paths):$/;"	kind:function	line:74
 join	../venv/lib/python3.6/posixpath.py	/^def join(a, *p):$/;"	kind:function	line:73
 joinuser	../venv/lib/python3.6/site.py	/^    def joinuser(*args):$/;"	kind:function	line:324
-json.py	../rmon/common/json.py	1;"	kind:file	line:1
+json	../tests/test_views.py	/^import json$/;"	kind:namespace	line:1
 k	../venv/lib/python3.6/locale.py	/^    k = k.replace('_', '')$/;"	kind:variable	line:717
 keyrefs	../venv/lib/python3.6/weakref.py	/^    def keyrefs(self):$/;"	kind:member	line:431
 keys	../venv/lib/python3.6/_collections_abc.py	/^    def keys(self):$/;"	kind:member	line:672
@@ -4409,10 +4411,10 @@ mbcs.py	../venv/lib/python3.6/encodings/mbcs.py	1;"	kind:file	line:1
 mbcs_decode	../venv/lib/python3.6/encodings/mbcs.py	/^from codecs import mbcs_encode, mbcs_decode$/;"	kind:namespace	line:12
 mbcs_encode	../venv/lib/python3.6/encodings/mbcs.py	/^from codecs import mbcs_encode, mbcs_decode$/;"	kind:namespace	line:12
 merge	../venv/lib/python3.6/heapq.py	/^def merge(*iterables, key=None, reverse=False):$/;"	kind:function	line:314
-method_decorators	../rmon/common/rest.py	/^    method_decorators = []$/;"	kind:variable	line:39
-method_decorators	../rmon/views/host.py	/^    method_decorators = (ObjectMustBeExist(Host), )$/;"	kind:variable	line:38
-method_decorators	../rmon/views/host.py	/^    method_decorators = (ObjectMustBeExist(Host), )$/;"	kind:variable	line:67
-method_decorators	../rmon/views/host.py	/^    method_decorators = (ObjectMustBeExist(Host), )$/;"	kind:variable	line:80
+method_decorators	../rmon/common/rest.py	/^    method_decorators = []$/;"	kind:variable	line:41
+method_decorators	../rmon/views/server.py	/^    method_decorators = (ObjectMustBeExist(Server), )$/;"	kind:variable	line:37
+method_decorators	../rmon/views/server.py	/^    method_decorators = (ObjectMustBeExist(Server), )$/;"	kind:variable	line:66
+method_decorators	../rmon/views/server.py	/^    method_decorators = (ObjectMustBeExist(Server), )$/;"	kind:variable	line:79
 methodcaller	../venv/lib/python3.6/operator.py	/^class methodcaller:$/;"	kind:class	line:296
 mkdtemp	../venv/lib/python3.6/tempfile.py	/^def mkdtemp(suffix=None, prefix=None, dir=None):$/;"	kind:function	line:345
 mkstemp	../venv/lib/python3.6/tempfile.py	/^def mkstemp(suffix=None, prefix=None, dir=None, text=False):$/;"	kind:function	line:305
@@ -4583,14 +4585,14 @@ popitem	../venv/lib/python3.6/collections/__init__.py	/^    def popitem(self, la
 popitem	../venv/lib/python3.6/weakref.py	/^    def popitem(self):$/;"	kind:member	line:227
 popitem	../venv/lib/python3.6/weakref.py	/^    def popitem(self):$/;"	kind:member	line:443
 port	../rmon/models.py	/^    port = db.Column(db.Integer, default=6379)$/;"	kind:variable	line:28
-port	../rmon/models.py	/^    port = fields.Integer(required=True, validate=validate.Range(1024, 65536))$/;"	kind:variable	line:86
+port	../rmon/models.py	/^    port = fields.Integer(validate=validate.Range(1024, 65536))$/;"	kind:variable	line:86
 pos	../venv/lib/python3.6/operator.py	/^def pos(a):$/;"	kind:function	line:120
 pos	../venv/lib/python3.6/sre_parse.py	/^    def pos(self):$/;"	kind:member	line:283
 posix	../venv/lib/python3.6/os.py	/^    import posix$/;"	kind:namespace	line:64
 posixpath	../venv/lib/python3.6/fnmatch.py	/^import posixpath$/;"	kind:namespace	line:13
 posixpath.py	../venv/lib/python3.6/posixpath.py	1;"	kind:file	line:1
-post	../rmon/views/host.py	/^    def post(self):$/;"	kind:member	line:22
-post	../rmon/views/host.py	/^    def post(self, host_id):$/;"	kind:member	line:82
+post	../rmon/views/server.py	/^    def post(self):$/;"	kind:member	line:21
+post	../rmon/views/server.py	/^    def post(self, object_id):$/;"	kind:member	line:81
 post_load	../rmon/models.py	/^from marshmallow import (Schema, fields, validate, post_load,$/;"	kind:namespace	line:8
 pow	../venv/lib/python3.6/operator.py	/^def pow(a, b):$/;"	kind:function	line:124
 prepare_class	../venv/lib/python3.6/types.py	/^def prepare_class(name, bases=(), kwds=None):$/;"	kind:function	line:64
@@ -4602,7 +4604,7 @@ punycode.py	../venv/lib/python3.6/encodings/punycode.py	1;"	kind:file	line:1
 punycode_decode	../venv/lib/python3.6/encodings/punycode.py	/^def punycode_decode(text, errors):$/;"	kind:function	line:182
 punycode_encode	../venv/lib/python3.6/encodings/punycode.py	/^def punycode_encode(text):$/;"	kind:function	line:117
 purge	../venv/lib/python3.6/re.py	/^def purge():$/;"	kind:function	line:235
-put	../rmon/views/host.py	/^    def put(self, host_id):$/;"	kind:member	line:46
+put	../rmon/views/server.py	/^    def put(self, object_id):$/;"	kind:member	line:45
 pwd	../venv/lib/python3.6/posixpath.py	/^            import pwd$/;"	kind:namespace	line:246
 pwd	../venv/lib/python3.6/posixpath.py	/^        import pwd$/;"	kind:namespace	line:251
 pwd	../venv/lib/python3.6/tarfile.py	/^    import grp, pwd$/;"	kind:namespace	line:53
@@ -4714,9 +4716,8 @@ repr_set	../venv/lib/python3.6/reprlib.py	/^    def repr_set(self, x, level):$/;
 repr_str	../venv/lib/python3.6/reprlib.py	/^    def repr_str(self, x, level):$/;"	kind:member	line:123
 repr_tuple	../venv/lib/python3.6/reprlib.py	/^    def repr_tuple(self, x, level):$/;"	kind:member	line:80
 reprlib.py	../venv/lib/python3.6/reprlib.py	1;"	kind:file	line:1
-request	../rmon/common/decorators.py	/^from flask import request$/;"	kind:namespace	line:7
 request	../rmon/common/rest.py	/^from flask import request, make_response$/;"	kind:namespace	line:12
-request	../rmon/views/host.py	/^from flask import request$/;"	kind:namespace	line:5
+request	../rmon/views/server.py	/^from flask import request, g$/;"	kind:namespace	line:5
 reset	../venv/lib/python3.6/codecs.py	/^    def reset(self):$/;"	kind:member	line:202
 reset	../venv/lib/python3.6/codecs.py	/^    def reset(self):$/;"	kind:member	line:243
 reset	../venv/lib/python3.6/codecs.py	/^    def reset(self):$/;"	kind:member	line:275
@@ -4757,6 +4758,7 @@ rollover	../venv/lib/python3.6/tempfile.py	/^    def rollover(self):$/;"	kind:me
 rot13	../venv/lib/python3.6/encodings/rot_13.py	/^def rot13(infile, outfile):$/;"	kind:function	line:108
 rot13_map	../venv/lib/python3.6/encodings/rot_13.py	/^rot13_map = codecs.make_identity_dict(range(256))$/;"	kind:variable	line:50
 rot_13.py	../venv/lib/python3.6/encodings/rot_13.py	1;"	kind:file	line:1
+routes	../app.py	/^def routes():$/;"	kind:function	line:11
 rpartition	../venv/lib/python3.6/collections/__init__.py	/^    def rpartition(self, sep):$/;"	kind:member	line:1226
 rshift	../venv/lib/python3.6/operator.py	/^def rshift(a, b):$/;"	kind:function	line:128
 rsplit	../venv/lib/python3.6/collections/__init__.py	/^    def rsplit(self, sep=None, maxsplit=-1):$/;"	kind:member	line:1232
@@ -4795,6 +4797,8 @@ send	../venv/lib/python3.6/types.py	/^    def send(self, val):$/;"	kind:member	l
 sep	../venv/lib/python3.6/ntpath.py	/^sep = '\\\\'$/;"	kind:variable	line:27
 sep	../venv/lib/python3.6/os.py	/^from os.path import (curdir, pardir, sep, pathsep, defpath, extsep, altsep,$/;"	kind:namespace	line:92
 sep	../venv/lib/python3.6/posixpath.py	/^sep = '\/'$/;"	kind:variable	line:33
+server	../tests/fixtures.py	/^def server(db):$/;"	kind:function	line:34
+server.py	../rmon/views/server.py	1;"	kind:file	line:1
 set	../venv/lib/python3.6/site.py	/^    from sets import Set as set$/;"	kind:namespace	line:75
 setBEGINLIBPATH	../venv/lib/python3.6/site.py	/^def setBEGINLIBPATH():$/;"	kind:function	line:362
 set_data	../venv/lib/python3.6/importlib/_bootstrap_external.py	/^    def set_data(self, path, data):$/;"	kind:member	line:718
@@ -4985,14 +4989,28 @@ tempfile.py	../venv/lib/python3.6/tempfile.py	1;"	kind:file	line:1
 template	../venv/lib/python3.6/re.py	/^def template(pattern, flags=0):$/;"	kind:function	line:240
 template	../venv/lib/python3.6/tempfile.py	/^template = "tmp"$/;"	kind:variable	line:71
 test	../venv/lib/python3.6/base64.py	/^def test():$/;"	kind:function	line:589
-test_delete	../tests/test_models.py	/^    def test_delete(self, db, host):$/;"	kind:member	line:21
-test_get_metrics_failed	../tests/test_models.py	/^    def test_get_metrics_failed(self, host):$/;"	kind:member	line:61
-test_get_metrics_success	../tests/test_models.py	/^    def test_get_metrics_success(self, host):$/;"	kind:member	line:50
-test_index	../tests/test_views.py	/^    def test_index(self, client):$/;"	kind:member	line:11
+test_create_server_failed_with_dumplciate_server	../tests/test_views.py	/^    def test_create_server_failed_with_dumplciate_server(self, server, client):$/;"	kind:member	line:105
+test_create_server_failed_with_invalid_host	../tests/test_views.py	/^    def test_create_server_failed_with_invalid_host(self, db, client):$/;"	kind:member	line:84
+test_create_server_success	../tests/test_views.py	/^    def test_create_server_success(self, db, client):$/;"	kind:member	line:55
+test_delete	../tests/test_models.py	/^    def test_delete(self, db, server):$/;"	kind:member	line:21
+test_delete_failed_with_host_not_exist	../tests/test_views.py	/^    def test_delete_failed_with_host_not_exist(self, db, client):$/;"	kind:member	line:213
+test_delete_success	../tests/test_views.py	/^    def test_delete_success(self, server, client):$/;"	kind:member	line:202
+test_execute_failed	../tests/test_models.py	/^    def test_execute_failed(self, server):$/;"	kind:member	line:79
+test_execute_success	../tests/test_models.py	/^    def test_execute_success(self, server):$/;"	kind:member	line:74
+test_get_metrics_failed	../tests/test_models.py	/^    def test_get_metrics_failed(self, server):$/;"	kind:member	line:61
+test_get_metrics_failed_with_server_not_exist	../tests/test_views.py	/^    def test_get_metrics_failed_with_server_not_exist(self, db, client):$/;"	kind:member	line:247
+test_get_metrics_success	../tests/test_models.py	/^    def test_get_metrics_success(self, server):$/;"	kind:member	line:50
+test_get_metrics_success	../tests/test_views.py	/^    def test_get_metrics_success(self, server, client):$/;"	kind:member	line:233
+test_get_server_failed	../tests/test_views.py	/^    def test_get_server_failed(self, db, client):$/;"	kind:member	line:146
+test_get_server_success	../tests/test_views.py	/^    def test_get_server_success(self, server, client):$/;"	kind:member	line:132
+test_get_servers	../tests/test_views.py	/^    def test_get_servers(self, server, client):$/;"	kind:member	line:32
+test_index	../tests/test_views.py	/^    def test_index(self, client):$/;"	kind:member	line:14
 test_models.py	../tests/test_models.py	1;"	kind:file	line:1
 test_ping_failed	../tests/test_models.py	/^    def test_ping_failed(self, db):$/;"	kind:member	line:35
-test_ping_success	../tests/test_models.py	/^    def test_ping_success(self, db, host):$/;"	kind:member	line:28
+test_ping_success	../tests/test_models.py	/^    def test_ping_success(self, db, server):$/;"	kind:member	line:28
 test_save	../tests/test_models.py	/^    def test_save(self, db):$/;"	kind:member	line:8
+test_update_server_success	../tests/test_views.py	/^    def test_update_server_success(self, server, client):$/;"	kind:member	line:159
+test_update_server_success_with_duplicate_server	../tests/test_views.py	/^    def test_update_server_success_with_duplicate_server(self, server, client):$/;"	kind:member	line:179
 test_views.py	../tests/test_views.py	1;"	kind:file	line:1
 textwrap	../venv/lib/python3.6/site.py	/^        import textwrap$/;"	kind:namespace	line:753
 the	../venv/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
@@ -5052,7 +5070,7 @@ uniform	../venv/lib/python3.6/random.py	/^    def uniform(self, a, b):$/;"	kind:
 uniform	../venv/lib/python3.6/random.py	/^uniform = _inst.uniform$/;"	kind:variable	line:745
 union	../venv/lib/python3.6/_weakrefset.py	/^    def union(self, other):$/;"	kind:member	line:191
 unique	../venv/lib/python3.6/enum.py	/^def unique(enumeration):$/;"	kind:function	line:820
-unpack	../rmon/common/rest.py	/^    def unpack(value):$/;"	kind:member	line:96
+unpack	../rmon/common/rest.py	/^    def unpack(value):$/;"	kind:member	line:106
 unpack_archive	../venv/lib/python3.6/shutil.py	/^def unpack_archive(filename, extract_dir=None, format=None):$/;"	kind:function	line:937
 unregister_archive_format	../venv/lib/python3.6/shutil.py	/^def unregister_archive_format(name):$/;"	kind:function	line:747
 unregister_unpack_format	../venv/lib/python3.6/shutil.py	/^def unregister_unpack_format(name):$/;"	kind:function	line:856
@@ -5069,7 +5087,8 @@ updatecache	../venv/lib/python3.6/linecache.py	/^def updatecache(filename, modul
 updated_at	../rmon/models.py	/^    updated_at = db.Column(db.DateTime, default=datetime.utcnow)$/;"	kind:variable	line:30
 updated_at	../rmon/models.py	/^    updated_at = fields.DateTime(dump_only=True)$/;"	kind:variable	line:88
 upper	../venv/lib/python3.6/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1242
-url_for	../tests/test_views.py	/^from flask import url_for$/;"	kind:namespace	line:1
+url_for	../tests/test_views.py	/^from flask import url_for$/;"	kind:namespace	line:2
+urllib	../app.py	/^import urllib$/;"	kind:namespace	line:5
 urls.py	../rmon/views/urls.py	1;"	kind:file	line:1
 urlsafe_b64decode	../venv/lib/python3.6/base64.py	/^def urlsafe_b64decode(s):$/;"	kind:function	line:120
 urlsafe_b64encode	../venv/lib/python3.6/base64.py	/^def urlsafe_b64encode(s):$/;"	kind:function	line:111
@@ -5093,7 +5112,7 @@ valid_opts	../venv/bin/python-config	/^valid_opts = ['prefix', 'exec-prefix', 'i
 valid_opts	../venv/lib/python3.6/config-3.6m-darwin/python-config.py	/^valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',$/;"	kind:variable	line:11
 validate	../rmon/models.py	/^                         validate=validate.Regexp(r'^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$'))$/;"	kind:variable	line:85
 validate	../rmon/models.py	/^from marshmallow import (Schema, fields, validate, post_load,$/;"	kind:namespace	line:8
-validate_host	../rmon/models.py	/^    def validate_host(self, data):$/;"	kind:member	line:92
+validate_schema	../rmon/models.py	/^    def validate_schema(self, data):$/;"	kind:member	line:92
 value	../venv/lib/python3.6/enum.py	/^    def value(self):$/;"	kind:member	line:598
 value	../venv/lib/python3.6/enum.py	/^    value = _auto_null$/;"	kind:variable	line:55
 valuerefs	../venv/lib/python3.6/weakref.py	/^    def valuerefs(self):$/;"	kind:member	line:280
@@ -5102,6 +5121,10 @@ values	../venv/lib/python3.6/collections/__init__.py	/^    def values(self):$/;"
 values	../venv/lib/python3.6/weakref.py	/^    def values(self):$/;"	kind:member	line:220
 values	../venv/lib/python3.6/weakref.py	/^    def values(self):$/;"	kind:member	line:425
 version	../venv/lib/python3.6/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
+view_func	../rmon/views/urls.py	/^                 view_func=ServerCommand.as_view('server_command'))$/;"	kind:variable	line:22
+view_func	../rmon/views/urls.py	/^                 view_func=ServerDetail.as_view('server_detail'))$/;"	kind:variable	line:18
+view_func	../rmon/views/urls.py	/^                 view_func=ServerList.as_view('server_list'))$/;"	kind:variable	line:16
+view_func	../rmon/views/urls.py	/^                 view_func=ServerMetrics.as_view('server_metrics'))$/;"	kind:variable	line:20
 virtual_addsitepackages	../venv/lib/python3.6/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642
 virtual_install_main_packages	../venv/lib/python3.6/site.py	/^def virtual_install_main_packages():$/;"	kind:function	line:552
 virtualenv	../venv/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
@@ -5134,7 +5157,7 @@ windows_locale	../venv/lib/python3.6/locale.py	/^windows_locale = {$/;"	kind:var
 with	../venv/lib/python3.6/importlib/_bootstrap.py	/^            raise ImportError('attempted relative import with no known parent '$/;"	kind:namespace	line:918
 with_statement	../venv/lib/python3.6/__future__.py	/^with_statement = _Feature((2, 5, 0, "alpha", 1),$/;"	kind:variable	line:122
 wrapped	../venv/lib/python3.6/types.py	/^    def wrapped(*args, **kwargs):$/;"	kind:function	line:247
-wrapper	../rmon/common/decorators.py	/^        def wrapper(object_id, *args, **kwargs):$/;"	kind:function	line:27
+wrapper	../rmon/common/decorators.py	/^        def wrapper(*args, **kwargs):$/;"	kind:function	line:27
 wrapper	../venv/lib/python3.6/functools.py	/^        def wrapper(*args, **kwds):$/;"	kind:function	line:502
 wrapper	../venv/lib/python3.6/functools.py	/^        def wrapper(*args, **kwds):$/;"	kind:function	line:511
 wrapper	../venv/lib/python3.6/functools.py	/^        def wrapper(*args, **kwds):$/;"	kind:function	line:526

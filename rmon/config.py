@@ -12,6 +12,7 @@ class DevConfig:
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    TEMPLATES_AUTO_RELOAD = True
 
 
 class ProductConfig(DevConfig):

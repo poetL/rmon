@@ -4,3 +4,8 @@ node_modules
 *.pyc
 *.log
 .cache
+
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
