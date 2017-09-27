@@ -86,11 +86,14 @@ class RestView(MethodView):
 
         # 处理错误，HTTP 状态码大于 400 时认为是错误
         # 返回的错误类似于 {'name': ['redis server already exist']} 将其调整为
-        # {'name': 'redis server already exist'}
+        # {'ok': False, 'message': 'redis server already exist'}
         if code >= 400 and isinstance(data, dict):
             for key in data:
                 if isinstance(data[key], list) and len(data[key]) > 0:
-                    data[key] = data[key][0]
+                    message = data[key][0]
+                else:
+                    message = data[key]
+            data = {'ok': False, 'message': message}
 
         # 序列化数据
         result = dumps(data) + '\n'

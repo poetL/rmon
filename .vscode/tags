@@ -201,7 +201,7 @@ Container	../venv/lib/python3.6/_collections_abc.py	/^class Container(metaclass=
 Coroutine	../venv/lib/python3.6/_collections_abc.py	/^class Coroutine(Awaitable):$/;"	kind:class	line:114
 CoroutineType	../venv/lib/python3.6/types.py	/^CoroutineType = type(_c)$/;"	kind:variable	line:24
 Counter	../venv/lib/python3.6/collections/__init__.py	/^class Counter(dict):$/;"	kind:class	line:465
-DEBUG	../rmon/config.py	/^    DEBUG = False$/;"	kind:variable	line:20
+DEBUG	../rmon/config.py	/^    DEBUG = False$/;"	kind:variable	line:21
 DEBUG	../rmon/config.py	/^    DEBUG = True$/;"	kind:variable	line:12
 DEBUG	../venv/lib/python3.6/re.py	/^    DEBUG = sre_compile.SRE_FLAG_DEBUG # dump pattern after compilation$/;"	kind:variable	line:160
 DEBUG_BUILD	../venv/lib/python3.6/importlib/_bootstrap_external.py	/^    DEBUG_BUILD = False  # Changed in _setup()$/;"	kind:variable	line:602
@@ -676,7 +676,7 @@ Pattern	../venv/lib/python3.6/sre_parse.py	/^class Pattern:$/;"	kind:class	line:
 PlainToken	../venv/lib/python3.6/tokenize.py	/^PlainToken = group(Number, Funny, String, Name)$/;"	kind:variable	line:184
 Pointfloat	../venv/lib/python3.6/tokenize.py	/^Pointfloat = group(r'[0-9](?:_?[0-9])*\\.(?:[0-9](?:_?[0-9])*)?',$/;"	kind:variable	line:129
 ProductConfig	../rmon/app.py	/^from rmon.config import DevConfig, ProductConfig$/;"	kind:namespace	line:10
-ProductConfig	../rmon/config.py	/^class ProductConfig(DevConfig):$/;"	kind:class	line:17
+ProductConfig	../rmon/config.py	/^class ProductConfig(DevConfig):$/;"	kind:class	line:18
 ProxyTypes	../venv/lib/python3.6/weakref.py	/^ProxyTypes = (ProxyType, CallableProxyType)$/;"	kind:variable	line:27
 PseudoExtras	../venv/lib/python3.6/tokenize.py	/^PseudoExtras = group(r'\\\\\\r?\\n|\\Z', Comment, Triple)$/;"	kind:variable	line:192
 PseudoToken	../venv/lib/python3.6/tokenize.py	/^PseudoToken = Whitespace + group(PseudoExtras, Number, Funny, ContStr, Name)$/;"	kind:variable	line:193
@@ -738,7 +738,7 @@ SOURCE_SUFFIXES	../venv/lib/python3.6/importlib/_bootstrap_external.py	/^SOURCE_
 SOURCE_SUFFIXES	../venv/lib/python3.6/importlib/machinery.py	/^from ._bootstrap_external import (SOURCE_SUFFIXES, DEBUG_BYTECODE_SUFFIXES,$/;"	kind:namespace	line:8
 SPECIAL_CHARS	../venv/lib/python3.6/sre_parse.py	/^SPECIAL_CHARS = ".\\\\[{()*+?^$|"$/;"	kind:variable	line:17
 SQLALCHEMY_DATABASE_URI	../rmon/config.py	/^    SQLALCHEMY_DATABASE_URI = 'sqlite:\/\/'$/;"	kind:variable	line:14
-SQLALCHEMY_DATABASE_URI	../rmon/config.py	/^    SQLALCHEMY_DATABASE_URI = 'sqlite:\/\/\/ %s' % path$/;"	kind:variable	line:24
+SQLALCHEMY_DATABASE_URI	../rmon/config.py	/^    SQLALCHEMY_DATABASE_URI = 'sqlite:\/\/\/ %s' % path$/;"	kind:variable	line:25
 SQLALCHEMY_TRACK_MODIFICATIONS	../rmon/config.py	/^    SQLALCHEMY_TRACK_MODIFICATIONS = False$/;"	kind:variable	line:13
 SQLAlchemy	../rmon/models.py	/^from flask_sqlalchemy import SQLAlchemy$/;"	kind:namespace	line:5
 SRE_FLAG_ASCII	../venv/lib/python3.6/sre_constants.py	/^SRE_FLAG_ASCII = 256 # use ascii "locale"$/;"	kind:variable	line:173
@@ -1099,6 +1099,7 @@ SystemRandom	../venv/lib/python3.6/random.py	/^class SystemRandom(Random):$/;"	k
 T	../venv/lib/python3.6/encodings/punycode.py	/^def T(j, bias):$/;"	kind:function	line:70
 T	../venv/lib/python3.6/re.py	/^    T = TEMPLATE$/;"	kind:variable	line:159
 TEMPLATE	../venv/lib/python3.6/re.py	/^    TEMPLATE = sre_compile.SRE_FLAG_TEMPLATE # disable backtracking$/;"	kind:variable	line:158
+TEMPLATES_AUTO_RELOAD	../rmon/config.py	/^    TEMPLATES_AUTO_RELOAD = True$/;"	kind:variable	line:15
 TILDE	../venv/lib/python3.6/token.py	/^TILDE = 31$/;"	kind:variable	line:44
 TIMEOUT_MAX	../venv/lib/python3.6/_dummy_thread.py	/^TIMEOUT_MAX = 2**31$/;"	kind:variable	line:20
 TMP_MAX	../venv/lib/python3.6/tempfile.py	/^    TMP_MAX = 10000$/;"	kind:variable	line:65
@@ -4548,7 +4549,7 @@ partialmethod	../venv/lib/python3.6/functools.py	/^class partialmethod(object):$
 partition	../venv/lib/python3.6/collections/__init__.py	/^    def partition(self, sep):$/;"	kind:member	line:1210
 password	../rmon/models.py	/^    password = db.Column(db.String())$/;"	kind:variable	line:29
 password	../rmon/models.py	/^    password = fields.String()$/;"	kind:variable	line:87
-path	../rmon/config.py	/^    path = os.path.join(os.getcwd(), 'rmon.db').replace('\\\\', '\/')$/;"	kind:variable	line:23
+path	../rmon/config.py	/^    path = os.path.join(os.getcwd(), 'rmon.db').replace('\\\\', '\/')$/;"	kind:variable	line:24
 path	../venv/lib/python3.6/os.py	/^    import ntpath as path$/;"	kind:namespace	line:77
 path	../venv/lib/python3.6/os.py	/^    import posixpath as path$/;"	kind:namespace	line:57
 path	../venv/lib/python3.6/tarfile.py	/^    path = property(_getpath, _setpath)$/;"	kind:variable	line:764

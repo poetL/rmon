@@ -22,4 +22,4 @@ class ProductConfig(DevConfig):
 
     # sqlite 数据库文件路径
     path = os.path.join(os.getcwd(), 'rmon.db').replace('\\', '/')
-    SQLALCHEMY_DATABASE_URI = 'sqlite:/// %s' % path
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///%s' % path

@@ -4,6 +4,7 @@ node_modules
 *.pyc
 *.log
 .cache
+*.db
 
 .DS_Store
 node_modules/
