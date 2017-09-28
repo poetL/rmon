@@ -16,6 +16,8 @@ $ pip install -r requirements.txt
 $ FLASK_APP=app.py flask run
 ```
 
+接着访问 `http://127.0.0.1:5000` 查看效果。
+
 ## 测试用例
 
 通过 virtualenv 建立依赖环境并激活后，通过下面的命令运行测试用例:

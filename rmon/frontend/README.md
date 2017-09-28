@@ -1,18 +1,17 @@
 # frontend
 
-> A Vue.js project
+基于 [Vue.js](https://cn.vuejs.org/) 开发项目。
 
-## Build Setup
+
+## 开发
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 以 watch 模式编译前端文件
 npm run dev
 
-# build for production with minification
+# 编译生产环境代码
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
