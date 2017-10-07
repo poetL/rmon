@@ -102,7 +102,7 @@ class TestServerList:
         assert resp.status_code == 400
         assert resp.json == errors
 
-    def test_create_server_failed_with_dumplciate_server(self, server, client):
+    def test_create_server_failed_with_duplciate_server(self, server, client):
         """创建重复的服务器时将失败
         """
 
