@@ -10,9 +10,13 @@ class DevConfig:
     """
 
     DEBUG = True
+    TEMPLATES_AUTO_RELOAD = True
+    SECRET_KEY ='OQR!YuiIZ0K5!NmqI1zy@S7x&ac5zJ9DAQhb'
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
-    TEMPLATES_AUTO_RELOAD = True
+
+    WX_TOKEN = 'shiyanlou-rmon'
 
 
 class ProductConfig(DevConfig):

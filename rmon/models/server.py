@@ -1,20 +1,20 @@
-""" rmon.model
+""" rmon.models.server
 
 该模块实现了所有的 model 类以及相应的序列化类
 """
-from flask_sqlalchemy import SQLAlchemy
 
-from datetime import datetime
 from marshmallow import (Schema, fields, validate, post_load,
                          validates_schema, ValidationError)
 from redis import StrictRedis, RedisError
 
-from rmon.common.rest import RestException
+from rmon.common.errors import RedisConnectError
+from rmon.extensions import db
 
-db = SQLAlchemy()
+from .base import BaseModel
 
 
-class Server(db.Model):
+
+class Server(BaseModel):
     """Redis服务器模型
     """
 
@@ -27,23 +27,6 @@ class Server(db.Model):
     host = db.Column(db.String(15))
     port = db.Column(db.Integer, default=6379)
     password = db.Column(db.String())
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __str__(self):
-        return '<Server(name=%s)>' % self.name
-
-    def save(self):
-        """保存到数据库中
-        """
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        """从数据库中删除
-        """
-        db.session.delete(self)
-        db.session.commit()
 
     @property
     def redis(self):
@@ -55,7 +38,7 @@ class Server(db.Model):
         try:
             return self.redis.ping()
         except RedisError:
-            raise RestException(400, 'redis server %s can not connected' % self.host)
+            raise RedisConnectError(400, 'redis server %s can not connected' % self.host)
 
     def get_metrics(self):
         """获取 Redis 服务器监控信息
@@ -66,12 +49,7 @@ class Server(db.Model):
             # TODO 新版本的 Redis 服务器支持查看某一 setion 的信息，不必返回所有信息
             return self.redis.info()
         except RedisError:
-            raise RestException(400, 'redis server %s can not connected' % self.host)
-
-    def execute(self, *args, **kwargs):
-        """执行命令
-        """
-        pass
+            raise RedisConnectError(400, 'redis server %s can not connected' % self.host)
 
 
 class ServerSchema(Schema):
@@ -104,11 +82,11 @@ class ServerSchema(Schema):
 
         # 更新服务器时
         if instance is not None and server != instance:
-            raise ValidationError('Redis server already exist', 'name')
-        
+            raise ValidationError('redis server already exist', 'name')
+
         # 创建服务器时
         if instance is None and server:
-            raise ValidationError('Redis server already exist', 'name')
+            raise ValidationError('redis server already exist', 'name')
 
     @post_load
     def create_or_update(self, data):
@@ -124,3 +102,4 @@ class ServerSchema(Schema):
         for key in data:
             setattr(instance, key, data[key])
         return instance
+

@@ -6,15 +6,12 @@ import os
 from flask import Flask
 
 from rmon.views import api
-from rmon.models import db
+from rmon.extensions import db
 from rmon.config import DevConfig, ProductConfig
 
 
 def create_app():
     """ 创建并初始化 Flask app
-
-    Args:
-        config (dict): 配置字典
 
     Returns:
         app (object): Flask App 实例

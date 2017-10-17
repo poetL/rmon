@@ -1,7 +1,14 @@
+""" tests.views.test_server
+
+测试 Redis 服务器相关所有 API
+"""
+
 import json
 from flask import url_for
 
 from rmon.models import Server
+
+from tests.base import TestCase
 
 class TestIndex:
     """测试首页
@@ -23,16 +30,17 @@ class TestIndex:
         assert b'<div id="app"></div>' in resp.data
 
 
-class TestServerList:
+class TestServerList(TestCase):
     """测试 Redis 服务器列表 API
     """
 
     endpoint = 'api.server_list'
 
-    def test_get_servers(self, server, client):
+    def test_get_servers(self, server, client, admin):
         """获取 Redis 服务器列表
         """
-        resp = client.get(url_for(self.endpoint))
+
+        resp = client.get(url_for(self.endpoint), headers=self.token_header(admin))
 
         # RestView 视图基类会设置 HTTP 头部 Content-Type 为 json
         assert resp.headers['Content-Type'] == 'application/json; charset=utf-8'
@@ -52,7 +60,7 @@ class TestServerList:
         assert 'updated_at' in h
         assert 'created_at' in h
 
-    def test_create_server_success(self, db, client):
+    def test_create_server_success(self, db, client, admin):
         """测试创建 Redis 服务器成功
         """
         # 数据库中没有记录
@@ -68,8 +76,8 @@ class TestServerList:
         # 通过 '/servers/' 接口创建 Redis 服务器
         resp = client.post(url_for(self.endpoint),
                            data=json.dumps(data),
-                           content_type='application/json')
-        
+                           headers=self.token_header(admin))
+
         # 创建 Redis 服务器成功, 返回状态码 201
         assert resp.status_code == 201
         assert resp.json == {'ok': True}
@@ -81,11 +89,11 @@ class TestServerList:
         for key in data:
             assert getattr(server, key) == data[key]
 
-    def test_create_server_failed_with_invalid_host(self, db, client):
+    def test_create_server_failed_with_invalid_host(self, db, client, admin):
         """无效的服务器地址导致创建 Redis 服务器失败
         """
         # 地址无效时，会返回错误
-        errors = {'host': 'String does not match expected pattern.'}
+        errors = {'message': 'String does not match expected pattern.', 'ok': False}
 
         # 用于创建 Redis 服务器的参数
         data = {
@@ -96,18 +104,19 @@ class TestServerList:
         }
 
         # 通过 '/servers/' 接口创建 Redis 服务器
+        headers = self.token_header(admin)
         resp = client.post(url_for(self.endpoint),
                            data=json.dumps(data),
-                           content_type='application/json')
+                           headers=headers)
         assert resp.status_code == 400
         assert resp.json == errors
 
-    def test_create_server_failed_with_duplciate_server(self, server, client):
+    def test_create_server_failed_with_duplciate_server(self, server, client, admin):
         """创建重复的服务器时将失败
         """
 
         # 创建失败时返回的错误
-        errors = {'name': 'Redis server already exist'}
+        errors = {'message': 'redis server already exist', 'ok': False}
 
         data = {
             'name': server.name,
@@ -116,26 +125,28 @@ class TestServerList:
         }
 
         # 通过 '/servers/' 接口创建 Redis 服务器
+        headers = self.token_header(admin)
         resp = client.post(url_for(self.endpoint),
                            data=json.dumps(data),
-                           content_type='application/json')
+                           headers=headers)
         assert resp.status_code == 400
         assert resp.json == errors
 
 
-class TestServerDetail:
+class TestServerDetail(TestCase):
     """测试 Redis 服务器详情 API
     """
 
     endpoint = 'api.server_detail'
 
-    def test_get_server_success(self, server, client):
+    def test_get_server_success(self, server, client, admin):
         """测试获取 Redis 服务器详情
         """
 
         url = url_for(self.endpoint, object_id=server.id)
 
-        resp = client.get(url)
+        headers = self.token_header(admin)
+        resp = client.get(url, headers=headers)
 
         assert resp.status_code == 200
 
@@ -143,20 +154,21 @@ class TestServerDetail:
         for key in ('name', 'description', 'host', 'port'):
             assert data[key] == getattr(server, key)
 
-    def test_get_server_failed(self, db, client):
+    def test_get_server_failed(self, db, client, admin):
         """获取不存在的 Redis 服务器详情失败
         """
         errors = {'ok': False, 'message': 'object not exist'}
         server_not_exist = 100
         url = url_for(self.endpoint, object_id=server_not_exist)
 
-        resp = client.get(url)
+        headers = self.token_header(admin)
+        resp = client.get(url, headers=headers)
 
         # Redis 服务器不存在时返回 404
         assert resp.status_code == 404
         assert resp.json == errors
 
-    def test_update_server_success(self, server, client):
+    def test_update_server_success(self, server, client, admin):
         """更新 Redis 服务器成功
         """
 
@@ -166,20 +178,21 @@ class TestServerDetail:
 
         assert Server.query.count() == 1
 
+        headers = self.token_header(admin)
         # 通过 '/servers/' 接口创建 Redis 服务器
         resp = client.put(url_for(self.endpoint, object_id=server.id),
-                           data=json.dumps(data),
-                           content_type='application/json')
-        
+                          data=json.dumps(data),
+                          headers=headers)
+
         assert resp.status_code == 200
 
         # 成功更新名称
         assert server.name == data['name']
 
-    def test_update_server_success_with_duplicate_server(self, server, client):
+    def test_update_server_success_with_duplicate_server(self, server, client, admin):
         """更新服务器名称为其他同名服务器名称时失败
         """
-        errors = {'name': 'Redis server already exist'}
+        errors = {'message': 'redis server already exist', 'ok': False}
 
         assert Server.query.count() == 1
         # 先创建 Redis 服务器
@@ -192,25 +205,28 @@ class TestServerDetail:
         data = {'name': server.name}
 
         # 通过 '/servers/' 接口创建 Redis 服务器
+        headers = self.token_header(admin)
         resp = client.put(url_for(self.endpoint, object_id=second_server.id),
-                           data=json.dumps(data),
-                           content_type='application/json')
+                          data=json.dumps(data),
+                          headers=headers)
 
         assert resp.status_code == 400
         assert resp.json == errors
 
-    def test_delete_success(self, server, client):
+    def test_delete_success(self, server, client, admin):
         """删除 Redis 服务器成功
         """
 
         assert Server.query.count() == 1
 
-        resp = client.delete(url_for(self.endpoint, object_id=server.id))
+        headers = self.token_header(admin)
+        resp = client.delete(url_for(self.endpoint, object_id=server.id),
+                             headers=headers)
 
         assert resp.status_code == 204
         assert Server.query.count() == 0
 
-    def test_delete_failed_with_host_not_exist(self, db, client):
+    def test_delete_failed_with_host_not_exist(self, db, client, admin):
         """删除不存在的 Redis 服务器失败
         """
         errors = {'ok': False, 'message': 'object not exist'}
@@ -218,23 +234,27 @@ class TestServerDetail:
         server_not_exist = 100
         assert Server.query.get(server_not_exist) is None
 
-        resp = client.delete(url_for(self.endpoint, object_id=server_not_exist))
+        headers = self.token_header(admin)
+        resp = client.delete(url_for(self.endpoint, object_id=server_not_exist),
+                             headers=headers)
 
         assert resp.status_code == 404
         assert resp.json == errors
 
 
-class TestServerMetrics:
+class TestServerMetrics(TestCase):
     """测试 Redis 监控信息 API
     """
 
     endpoint = 'api.server_metrics'
 
-    def test_get_metrics_success(self, server, client):
+    def test_get_metrics_success(self, server, client, admin):
         """成功获取 Redis 服务器监控信息
         """
 
-        resp = client.get(url_for(self.endpoint, object_id=server.id))
+        headers = self.token_header(admin)
+        resp = client.get(url_for(self.endpoint, object_id=server.id),
+                          headers=headers)
 
         assert resp.status_code == 200
         metrics = resp.json
@@ -244,7 +264,7 @@ class TestServerMetrics:
         assert 'used_cpu_sys' in metrics
         assert 'used_memory' in metrics
 
-    def test_get_metrics_failed_with_server_not_exist(self, db, client):
+    def test_get_metrics_failed_with_server_not_exist(self, db, client, admin):
         """获取不存在的 Redis 服务器监控信息失败
         """
         errors = {'ok': False, 'message': 'object not exist'}
@@ -252,14 +272,10 @@ class TestServerMetrics:
         server_not_exist = 100
         assert Server.query.get(server_not_exist) is None
 
-        resp = client.get(url_for(self.endpoint, object_id=server_not_exist))
+        headers = self.token_header(admin)
+        resp = client.get(url_for(self.endpoint, object_id=server_not_exist),
+                          headers=headers)
 
         assert resp.status_code == 404
         assert resp.json == errors
 
-
-class TestServerCommand:
-    """测试 Redis 服务器执行命令接口
-    """
-
-    endpoint = 'api.server_command'

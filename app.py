@@ -4,7 +4,8 @@
 """
 import urllib
 from rmon.app import create_app
-from rmon.models import db
+from rmon.models import User
+from rmon.extensions import db
 
 app = create_app()
 
@@ -29,3 +30,11 @@ def init_db():
     """
     print("sqlite3 database file is %s" % app.config['SQLALCHEMY_DATABASE_URI'])
     db.create_all()
+
+    # create first user
+    name = 'admin'
+    password = '123456'
+    user = User(name=name, email='admin@rmon.com', is_admin=True)
+    user.password = password
+    user.save()
+    print("create admin user %s with password %s" % (name, password))
