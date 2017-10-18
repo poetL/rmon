@@ -10,26 +10,6 @@ from rmon.models import Server
 
 from tests.base import TestCase
 
-class TestIndex:
-    """测试首页
-
-    首页需要渲染模板
-    """
-
-    endpoint = 'api.index'
-
-    def test_index(self, client):
-        """测试首页
-        """
-
-        resp = client.get(url_for(self.endpoint))
-
-        assert resp.status_code == 200
-
-        # 模板渲染成功并返回
-        assert b'<div id="app"></div>' in resp.data
-
-
 class TestServerList(TestCase):
     """测试 Redis 服务器列表 API
     """
@@ -60,7 +40,7 @@ class TestServerList(TestCase):
         assert 'updated_at' in h
         assert 'created_at' in h
 
-    def test_create_server_success(self, db, client, admin):
+    def test_create_server_success(self, client, admin):
         """测试创建 Redis 服务器成功
         """
         # 数据库中没有记录
@@ -89,7 +69,7 @@ class TestServerList(TestCase):
         for key in data:
             assert getattr(server, key) == data[key]
 
-    def test_create_server_failed_with_invalid_host(self, db, client, admin):
+    def test_create_server_failed_with_invalid_host(self, client, admin):
         """无效的服务器地址导致创建 Redis 服务器失败
         """
         # 地址无效时，会返回错误
@@ -154,7 +134,7 @@ class TestServerDetail(TestCase):
         for key in ('name', 'description', 'host', 'port'):
             assert data[key] == getattr(server, key)
 
-    def test_get_server_failed(self, db, client, admin):
+    def test_get_server_failed(self, client, admin):
         """获取不存在的 Redis 服务器详情失败
         """
         errors = {'ok': False, 'message': 'object not exist'}
@@ -179,7 +159,7 @@ class TestServerDetail(TestCase):
         assert Server.query.count() == 1
 
         headers = self.token_header(admin)
-        # 通过 '/servers/' 接口创建 Redis 服务器
+        # 通过 '/servers/<int:object_id>' 接口更新 Redis 服务器
         resp = client.put(url_for(self.endpoint, object_id=server.id),
                           data=json.dumps(data),
                           headers=headers)
@@ -201,10 +181,10 @@ class TestServerDetail(TestCase):
         second_server.save()
         assert Server.query.count() == 2
 
-        # 尝试将 second_server 的名称更新成 server 一直，将会失败
+        # 尝试将 second_server 的名称更新成和 server 一致，将会失败
         data = {'name': server.name}
 
-        # 通过 '/servers/' 接口创建 Redis 服务器
+        # 通过 '/servers/<int:object_id>' 接口更新 Redis 服务器
         headers = self.token_header(admin)
         resp = client.put(url_for(self.endpoint, object_id=second_server.id),
                           data=json.dumps(data),
@@ -226,7 +206,7 @@ class TestServerDetail(TestCase):
         assert resp.status_code == 204
         assert Server.query.count() == 0
 
-    def test_delete_failed_with_host_not_exist(self, db, client, admin):
+    def test_delete_failed_with_host_not_exist(self, client, admin):
         """删除不存在的 Redis 服务器失败
         """
         errors = {'ok': False, 'message': 'object not exist'}
@@ -264,7 +244,7 @@ class TestServerMetrics(TestCase):
         assert 'used_cpu_sys' in metrics
         assert 'used_memory' in metrics
 
-    def test_get_metrics_failed_with_server_not_exist(self, db, client, admin):
+    def test_get_metrics_failed_with_server_not_exist(self, client, admin):
         """获取不存在的 Redis 服务器监控信息失败
         """
         errors = {'ok': False, 'message': 'object not exist'}

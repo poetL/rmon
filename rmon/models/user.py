@@ -144,22 +144,23 @@ class UserSchema(Schema):
         """
         instance = self.context.get('instance', None)
 
-        user = User.query.filter(db.or_(User.name==data['name'],
-                                        User.email==data['email'])).first()
+        user = User.query.filter(db.or_(User.name==data.get('name'),
+                                        User.email==data.get('email'))).first()
 
         if user is None:
             return
 
+        # 创建服务器时
+        if instance is None:
+            field = 'name' if user.name == data['name'] else 'email'
+            raise ValidationError('user already exist', field)
+
         # 更新用户时
-        if user is not None and user != instance:
+        if user != instance:
             # 判断是存在同名用户或者是同邮箱的用户
             field = 'name' if user.name == instance.name else 'email'
             raise ValidationError('user already exist', field)
 
-        # 创建服务器时
-        if instance is None and user:
-            field = 'name' if user.name == data['name'] else 'email'
-            raise ValidationError('user already exist', field)
 
 
     @post_load

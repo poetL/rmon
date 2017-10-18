@@ -2,6 +2,7 @@
 
 实现了所有的视图控制器
 """
+
 from flask import request, g
 
 from rmon.common.rest import RestView
