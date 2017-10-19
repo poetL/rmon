@@ -2,6 +2,7 @@
     <section>
         <!-- 导航栏 -->
         <Menu></Menu>
+
         <!--工具条-->
         <el-col :span="24" class="toolbar">
             <el-form :inline="true">
@@ -12,25 +13,28 @@
                     <el-button @click="handleSearch">查询</el-button>
                 </el-form-item>
                 <el-form-item>
-                    <el-button @click="handleAdd">添加服务器</el-button>
+                    <el-button @click="handleAdd">添加用户</el-button>
+                </el-form-item>
+                <el-form-item>
                 </el-form-item>
             </el-form>
         </el-col>
         <!-- 工具条 -->
 
-        <!-- Redis 服务器列表 -->
-        <el-table :data="servers" highlight-current-row border v-loading="listLoading">
+        <!-- 用户列表 -->
+        <el-table :data="users" highlight-current-row border v-loading="listLoading">
             <el-table-column prop="id" label="ID" width="100">
             </el-table-column>
-            <el-table-column prop="name" label="名称" width="200">
+            <el-table-column prop="name" label="用户名" width="100">
             </el-table-column>
-            <el-table-column prop="host" label="地址" width="100">
+            <el-table-column prop="email" label="邮件地址" width="150">
             </el-table-column>
-            <el-table-column prop="port" label="端口号" width="100">
+            <el-table-column prop="is_admin" label="管理员" width="100":formatter="(row, column) => row.is_admin ? '是': '否'">
             </el-table-column>
-            <el-table-column prop="password" label="密码" width="100">
+            <el-table-column prop="wx_id" label="微信ID">
             </el-table-column>
-            <el-table-column prop="description" label="描述">
+            <el-table-column prop="login_at" label="登录时间">
+               <template scope="data">{{ data.row.login_at | moment("YYYY-MM-DD HH:mm:ss") }}</template>
             </el-table-column>
             <el-table-column prop="updated_at" label="更新时间">
                <template scope="data">{{ data.row.updated_at | moment("YYYY-MM-DD HH:mm:ss") }}</template>
@@ -42,30 +46,26 @@
                 <template scope="scope">
                     <el-button type="text" size="small" @click="handleEdit(scope.row)">编辑</el-button>
                     <el-button type="text" size="small" @click="handleDelete(scope.row)">删除</el-button>
-                    <router-link :to="{name: 'metric', params: {serverId: scope.row.id}}" class="metric-link el-button el-button--small el-button--text">监控</router-link>
                 </template>
             </el-table-column>
         </el-table>
-        <!-- Redis 服务器列表 -->
+        <!-- 用户列表 -->
 
         <!-- 表单 -->
         <el-dialog :title="editForm.title" v-model="editForm.visible" :close-on-click-modal="false">
             <el-form :model="editForm.data" label-width="80px" :rules="editForm.rules" ref="editForm">
-                <el-form-item label="名称" prop="name">
+                <el-form-item label="昵称" prop="name">
                     <el-input v-model="editForm.data.name" auto-complete="on"></el-input>
                 </el-form-item>
-                <el-form-item label="地址" prop="host">
-                    <el-input v-model="editForm.data.host" auto-complete="on" ></el-input> 
+                <el-form-item label="邮箱" prop="email">
+                    <el-input v-model="editForm.data.email" auto-complete="on" ></el-input> 
 
-                </el-form-item>
-                <el-form-item label="地址" prop="port">
-                    <el-input-number v-model="editForm.data.port" :min="0" :max="65536"></el-input-number>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
                     <el-input v-model="editForm.data.password" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="描述">
-                    <el-input v-model="editForm.data.description" type="textarea" :rows="3" :maxlength="512"></el-input>
+                <el-form-item label="是否是管理员" prop="is_admin">
+                    <el-switch v-model="editForm.data.is_admin"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -83,25 +83,24 @@
         data() {
             return {
                 resources: {
-                    servers: this.$resource('/servers/'),
-                    serverDetail: this.$resource('/servers{/serverId}'),
+                    users: this.$resource('/users/'),
+                    userDetail: this.$resource('/users{/userId}'),
                 },
-                servers: [],
+                users: [],
                 editForm: {
                     visible: false,
                     title: '编辑',
                     data: {
                         id: 0,
                         name: '',
-                        host: '',
-                        port: 6379,
+                        email: '',
                         password: '',
-                        description: ''
+                        is_admin: false
                     },
                     rules: {
                         name: [{
                             required: true,
-                            message: '请输入名称',
+                            message: '请输入昵称',
                             trigger: 'blur'
                         }, {
                             min: 2,
@@ -109,35 +108,33 @@
                             message: '长度在 2 到 64 个字符',
                             trigger: 'blur'
                         }],
-                        host: [{
+                        email: [{
                             required: true,
-                            message: '请输入地址',
+                            message: '请输入邮箱',
                             trigger: 'blur'
-                        }],
-                        description: [{
-                            min: 0,
-                            max: 512,
-                            message: '长度在 2 到 512 个字符之间',
+                        }, {
+                            type: 'email',
+                            message: '请输入正确的邮箱',
+                            trigger: 'blur'
                         }]
                     }
-    
                 },
                 listLoading: false
             }
         },
         methods: {
             // 获取用户列表
-            async fetchServers() {
+            async fetchUsers() {
                     // 设置加载状态
                 this.listLoading = true
                 let resp, data
 
                 try {
-                    resp = await this.resources.servers.get()
+                    resp = await this.resources.users.get()
                     data = await resp.json()
                 }  catch (error) {
                     this.$message({
-                        message: '加载服务器失败，请稍后重试',
+                        message: '加载用户失败，请稍后重试',
                         type: 'error'
                     })
                     this.listLoading = false
@@ -145,7 +142,7 @@
                 }
 
                 this.listLoading = false
-                this.servers = data
+                this.users = data
             },
 
             // 搜索功能
@@ -160,12 +157,10 @@
                         this.$refs.editForm.resetFields()
                     }
                     this.editForm.data = {
-                        id: 0,
                         name: '',
-                        host: '',
-                        port: 6379,
+                        email: '',
                         password: '',
-                        description: ''
+                        is_admin: false
                     }
                 }
                 this.editForm.visible = true;
@@ -173,14 +168,14 @@
             },
 
             // 显示编辑界面
-            handleEdit(server) {
+            handleEdit(user) {
                 // 重置表单状态
                 this.editForm.visible = true;
                 this.editForm.title = '更新'
                 if (!!this.$refs.editForm) {
                     this.$refs.editForm.resetFields()
                 }
-                Object.assign(this.editForm.data, server)
+                Object.assign(this.editForm.data, user)
             },
 
             // 提交用户表单
@@ -206,21 +201,21 @@
 
                 try {
                     let resp, action
-                    // 添加服务器
+                    // 添加用户
                     if (this.editForm.data.id == 0) {
                         action = '添加'
-                        resp = await this.resources.servers.save(this.editForm.data)
+                        resp = await this.resources.users.save(this.editForm.data)
                     } else {
-                        // 更新服务器
+                        // 更新用户
                         action = '更新'
-                        resp = await this.resources.serverDetail.update(
-                            {serverId: this.editForm.data.id}, this.editForm.data)
+                        resp = await this.resources.userDetail.update(
+                            {userId: this.editForm.data.id}, this.editForm.data)
                     }
                     this.$message({
-                        message:  `服务器 ${this.editForm.data.name} ${action}成功`,
+                        message:  `用户 ${this.editForm.data.name} ${action}成功`,
                         type: 'success'
                     })
-                    this.fetchServers()
+                    this.fetchUsers()
                 } catch(resp) {
 
                     let message
@@ -240,7 +235,7 @@
             },
 
             // 删除操作
-            async handleDelete(server) {
+            async handleDelete(user) {
 
                 try {
                     await this.$confirm('确认删除吗？', '提示')
@@ -249,34 +244,34 @@
                 }
 
                 try {
-                    await this.resources.serverDetail.delete({serverId: server.id})
+                    await this.resources.userDetail.delete({userId: user.id})
                 } catch (resp) {
-                    let data
+                    let data, message
                     try {
                         data = await resp.json()
                         message = data.message
                     } catch(error) {
-                        message =  `服务器 ${server.name} 删除失败`
+                        message =  `用户 ${user.name} 删除失败`
                     }
                     this.$message({
                         type: 'error',
-                        message: messsage
+                        message: message
                     })
                     return
                 }
 
                 this.$message({
-                    message: `服务器 ${server.name} 删除成功`,
+                    message: `用户 ${user.name} 删除成功`,
                     type: 'success'
                 })
 
-                this.fetchServers()
+                this.fetchUsers()
             }
         },
 
         // 组件创建完成后就开始加载数据
         created() {
-            this.fetchServers()
+            this.fetchUsers()
         }
     }
 </script>
@@ -291,7 +286,4 @@
     padding: 10px 10px 0 0;
 }
 
-.metric-link {
-    text-decoration: none;
-}
 </style>

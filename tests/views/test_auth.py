@@ -3,6 +3,7 @@
 登录认证功能测试
 """
 
+import json
 from flask import url_for
 
 from rmon.models import User
@@ -23,7 +24,9 @@ class TestAuth:
 
         data = {'name': user.name, 'password': PASSWORD}
 
-        resp = client.post(url_for(self.endpoint), data=data)
+        resp = client.post(url_for(self.endpoint),
+                           data=json.dumps(data), 
+                           headers={'Content-Type':'application/json; utf-8'})
 
         assert resp.status_code == 200
         assert resp.json['ok'] == True
@@ -33,3 +36,15 @@ class TestAuth:
 
         assert u == user
 
+    def test_login_failed_with_no_password(self, client, user):
+        """登录失败
+        """
+
+        data = {'password': PASSWORD}
+
+        resp = client.post(url_for(self.endpoint),
+                           data=json.dumps(data),
+                           headers={'Content-Type':'application/json; utf-8'})
+
+        assert resp.status_code == 403
+        assert resp.json == {'ok': False, 'message': 'user name or password required'}

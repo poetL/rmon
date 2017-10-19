@@ -26,7 +26,7 @@ class User(BaseModel):
 
     id = db.Column(db.Integer, primary_key=True)
     # 用户微信 ID，全局唯一
-    open_id = db.Column(db.String(32), unique=True)
+    wx_id = db.Column(db.String(32), unique=True)
     name = db.Column(db.String(64), unique=True)
     email = db.Column(db.String(64), unique=True)
     _password = db.Column(db.String(128))
@@ -124,16 +124,35 @@ class User(BaseModel):
             raise InvalidTokenError(403, 'user not exist')
         return u
 
+    @classmethod
+    def create_administrator(cls):
+        """创建管理员账户
+
+        Returns:
+            name(str): 管理员账户名称
+            password(str): 管理员账户密码
+        """
+        name = 'admin'
+        # 管理员账户名称默认为 admin
+        admin = cls.query.filter_by(name=name).first()
+        if admin:
+            return admin.name, ''
+        password = '123456'
+        admin = User(name=name, email='amin@rmon.com', is_admin=True)
+        admin.password = password
+        admin.save()
+        return name, password
+
 
 class UserSchema(Schema):
     """User对象序列化类
     """
     id = fields.Integer(dump_only=True)
-    open_id = fields.String(dump_only=True)
     name = fields.String(required=True, validate=validate.Length(2, 64))
     email = fields.Email(required=True, validate=validate.Length(2, 64))
     password = fields.String(load_only=True, validate=validate.Length(2, 128))
     is_admin = fields.Boolean()
+    wx_id = fields.String(dump_only=True)
     login_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
     created_at = fields.DateTime(dump_only=True)
@@ -176,7 +195,7 @@ class UserSchema(Schema):
         else:
             user = instance
 
+        # FIXME 更新用户时可能覆盖用户密码
         for key in data:
             setattr(user, key, data[key])
         return user
-

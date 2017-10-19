@@ -28,13 +28,12 @@ def routes():
 def init_db():
     """初始化数据库
     """
-    print("sqlite3 database file is %s" % app.config['SQLALCHEMY_DATABASE_URI'])
     db.create_all()
+    print("sqlite3 database file is %s" % app.config['SQLALCHEMY_DATABASE_URI'])
 
-    # create first user
-    name = 'admin'
-    password = '123456'
-    user = User(name=name, email='admin@rmon.com', is_admin=True)
-    user.password = password
-    user.save()
-    print("create admin user %s with password %s" % (name, password))
+    # create administrator
+    name, password = User.create_administrator()
+
+    # 如果 password 为空，代表已经存在 admin 账户
+    if password != '':
+        print("create admin user %s with password %s" % (name, password))

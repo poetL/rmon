@@ -17,7 +17,10 @@ PASSWORD = '123456'
 def app():
     """ Flask app
     """
-    return create_app()
+    config ={
+        'TESTING': True
+    }
+    return create_app(config)
 
 
 @pytest.yield_fixture

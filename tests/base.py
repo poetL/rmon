@@ -16,4 +16,3 @@ class TestCase:
             'Authorization': value,
             'Content-Type': 'application/json; charset=utf-8'
         }
-
