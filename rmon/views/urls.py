@@ -9,7 +9,7 @@ from rmon.views.server import (ServerCommand, ServerDetail, ServerList,
                                ServerMetrics)
 from rmon.views.user import UserList, UserDetail
 from rmon.views.auth import AuthView
-from rmon.views.wx import WxView
+from rmon.views.wx import WxView, WxBind
 
 api = Blueprint('api', __name__)
 
@@ -36,3 +36,4 @@ api.add_url_rule('/servers/<int:object_id>/command',
 
 # 微信接口
 api.add_url_rule('/wx/', view_func=WxView.as_view('wx_view'))
+api.add_url_rule('/wx/bind', view_func=WxBind.as_view('wx_bind'))
