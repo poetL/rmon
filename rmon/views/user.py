@@ -10,6 +10,7 @@ from rmon.models import User, UserSchema
 
 from .decorators import ObjectMustBeExist, TokenAuthenticate
 
+# TODO 实现解绑用户微信账户的 API
 
 class UserList(RestView):
     """Redis 服务器列表

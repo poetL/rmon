@@ -40,6 +40,18 @@ class Server(BaseModel):
         except RedisError:
             raise RedisConnectError(400, 'redis server %s can not connected' % self.host)
 
+    @property
+    def status(self):
+        """服务器当前状态
+        """
+        status = 'error'
+        try:
+            if self.ping():
+                status = 'ok'
+        except RedisConnectError:
+            pass
+        return status
+
     def get_metrics(self):
         """获取 Redis 服务器监控信息
 

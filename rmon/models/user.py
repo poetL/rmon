@@ -65,7 +65,7 @@ class User(BaseModel):
         user = cls.query.filter(db.or_(cls.name==identifier,
                                        cls.email==identifier)).first()
         if user is None or not user.verify_password(password):
-            return AuthenticationError(403, 'authentication failed')
+            raise AuthenticationError(403, 'authentication failed')
         return user
 
     def generate_token(self):
@@ -104,9 +104,14 @@ class User(BaseModel):
         """
         now = datetime.utcnow()
 
+        if verify_exp:
+            options = None
+        else:
+            options = {'verify_exp': False}
+
         try:
             payload = jwt.decode(token, current_app.secret_key, verify=True,
-                                 verify_exp=verify_exp, algorithms=['HS512'],
+                                 algorithms=['HS512'], options=options,
                                  require_exp=True)
         except jwt.InvalidTokenError as e:
             raise InvalidTokenError(403, str(e))
@@ -142,6 +147,12 @@ class User(BaseModel):
         admin.password = password
         admin.save()
         return name, password
+
+    @classmethod
+    def wx_id_user(cls, wx_id):
+        """根据 wx_id 获取用户
+        """
+        return cls.query.filter_by(wx_id=wx_id).first()
 
 
 class UserSchema(Schema):

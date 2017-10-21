@@ -4,11 +4,13 @@
 """
 
 from datetime import datetime
-from flask import request
+from flask import request, g
 
 from rmon.models import User
 from rmon.common.errors import AuthenticationError
 from rmon.common.rest import RestView
+
+from .decorators import TokenAuthenticate
 
 
 class AuthView(RestView):
@@ -23,6 +25,9 @@ class AuthView(RestView):
 
         # FIXME 没有处理 data 为 None 的情况
         data = request.get_json()
+        if data is None:
+            raise AuthenticationError(403, 'user name or password required')
+
         name = data.get('name')
         password = data.get('password')
 
@@ -31,6 +36,17 @@ class AuthView(RestView):
 
         # FIXME 只有管理员用户允许登录管理后台
         user = User.authenticate(name, password)
+        if not user.is_admin:
+            raise AuthenticationError(403, 'user name or password required')
+
         user.login_at = datetime.utcnow()
         user.save()
         return {'ok': True, 'token': user.generate_token()}
+
+
+class RefreshTokenView(RestView):
+
+    method_decorators = (TokenAuthenticate(admin=False, verify_exp=False), )
+
+    def get(self):
+        return {'ok': True, 'token': g.user.generate_token()}

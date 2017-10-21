@@ -8,7 +8,7 @@ from rmon.views.index import IndexView
 from rmon.views.server import (ServerCommand, ServerDetail, ServerList,
                                ServerMetrics)
 from rmon.views.user import UserList, UserDetail
-from rmon.views.auth import AuthView
+from rmon.views.auth import AuthView, RefreshTokenView
 from rmon.views.wx import WxView, WxBind
 
 api = Blueprint('api', __name__)
@@ -18,6 +18,8 @@ api.add_url_rule('/', view_func=IndexView.as_view('index'))
 
 # 登录
 api.add_url_rule('/login', view_func=AuthView.as_view('login'))
+api.add_url_rule('/token/refresh',
+                 view_func=RefreshTokenView.as_view('refresh_token'))
 
 # 用户管理
 api.add_url_rule('/users/', view_func=UserList.as_view('user_list'))
@@ -36,4 +38,4 @@ api.add_url_rule('/servers/<int:object_id>/command',
 
 # 微信接口
 api.add_url_rule('/wx/', view_func=WxView.as_view('wx_view'))
-api.add_url_rule('/wx/bind', view_func=WxBind.as_view('wx_bind'))
+api.add_url_rule('/wx/bind/<wx_id>', view_func=WxBind.as_view('wx_bind'))

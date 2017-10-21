@@ -52,12 +52,13 @@ class TokenAuthenticate:
     验证 HTTP Authorization 头所包含的 token
     """
 
-    def __init__(self, admin=True):
+    def __init__(self, admin=True, verify_exp=True):
         """
         Args:
             admin(bool): 是否需要验证管理员权限
         """
         self.admin = admin
+        self.verify_exp = verify_exp
 
     def __call__(self, func):
         """装饰器实现
@@ -77,7 +78,7 @@ class TokenAuthenticate:
             elif len(parts) > 2:
                 raise AuthenticationError(401, 'invalid token')
             token = parts[1]
-            user = User.verify_token(token)
+            user = User.verify_token(token, verify_exp=self.verify_exp)
 
             # 如果需要验证是否是管理员
             if self.admin and not user.is_admin:

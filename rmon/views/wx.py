@@ -4,14 +4,13 @@
 """
 import hashlib
 
-from flask import request, current_app, abort, render_template, g, make_response
+from flask import request, current_app, abort, render_template, make_response
 from flask.views import MethodView
-from wechatpy import parse_message, create_reply
+from wechatpy import parse_message
 
-from rmon.common.errors import RestError
+from rmon.models import User
+from rmon.wx import wx_dispatcher
 from rmon.common.rest import RestView
-
-from .decorators import TokenAuthenticate
 
 
 class WxView(MethodView):
@@ -49,7 +48,7 @@ class WxView(MethodView):
         self.check_signature()
 
         msg = parse_message(request.data)
-        reply = create_reply('实验楼, rmon', msg)
+        reply = wx_dispatcher.dispatch(msg)
         return reply.render()
 
 
@@ -57,20 +56,22 @@ class WxBind(RestView):
     """微信注册绑定账户页面
     """
 
-    # 只有 POST 方法才需要认证
-    method_decorators = {'post': TokenAuthenticate()}
-
-    def get(self):
+    def get(self, wx_id):
         result = render_template('wx_bind.html')
         return make_response(result, 200)
 
-    def post(self):
+    def post(self, wx_id):
         """绑定用户
         """
         data = request.get_json()
-        if data is None or 'wx_id' not in data:
-            raise RestError(400, 'not found wx id')
-        g.user.wx_id= data.get('wx_id')
-        g.user.save()
-        return {'ok': True, 'message': 'bind success'}
+        if data is None or 'name' not in data or 'password' not in data:
+            return {'ok': False, 'message': '无效用户数据'}, 400
 
+        user = User.authenticate(data['name'], data['password'])
+
+        if user.wx_id is not None:
+            return {'ok': False, 'message': '已绑定到其他微信账户'}, 400
+
+        user.wx_id = wx_id
+        user.save()
+        return {'ok': True, 'message': '绑定成功'}
